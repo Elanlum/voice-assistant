@@ -23,7 +23,6 @@ def user_input():
         # Mic captured
         audio = voice_recognizer.listen(source)
 
-    # Mic released
 
     voice_text = voice_recognizer.recognize_google(audio, language="ru")
 
