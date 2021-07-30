@@ -52,7 +52,7 @@ def handle_command(user_text):
     except KeyError:
         reply("Не понимаю Вас")
 
-
+# starting function
 def start():
     while True:
         try:
