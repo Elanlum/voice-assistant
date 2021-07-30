@@ -1,5 +1,4 @@
 from playsound import playsound
-# import gtts
 import pyttsx3
 import speech_recognition as sr
 import os
@@ -14,17 +13,17 @@ replicas = {
         'как здоровье': 'Все нормас'
     }
 
-#добавить комментарий к каждой функции с описанием 
+
 def user_input():
     print("Скажите что-нибудь >>>")
 
     # We will transform this function later to get voice
     voice_recognizer = sr.Recognizer()
     with sr.Microphone() as source:
-        # Микрофон захвачен
+        # Mic captured
         audio = voice_recognizer.listen(source)
 
-    # Микрофон снова доступен другим программам
+    # Mic released
 
     voice_text = voice_recognizer.recognize_google(audio, language="ru")
 
@@ -38,13 +37,6 @@ def reply(text):
     
     ttsEngine.say(str(text))
     ttsEngine.runAndWait()
-
-    # voice = gtts.gTTS(text, lang="ru")
-    # audio_file = "audio.mp3"
-    # voice.save(audio_file)
-
-    # playsound.playsound(audio_file)
-    # os.remove(audio_file)
 
 
 def handle_command(user_text):
