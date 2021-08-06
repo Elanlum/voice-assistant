@@ -1,17 +1,11 @@
-from playsound import playsound
 import pyttsx3
 import speech_recognition as sr
-import os
-import sys
+from yandex_player import play_yandex_last_favourite_track
+from replicas_dictionary import dictionary
 
 google_russian_female_voice = 27
 
-replicas = {
-        'привет': 'Привет-привет!',
-        'пока': 'Песня для вас, раз такое дело',
-        'как дела': 'Город засыпает, мафия просыпается',
-        'как здоровье': 'Все нормас'
-    }
+replicas = dictionary()
 
 
 def user_input():
@@ -22,7 +16,6 @@ def user_input():
     with sr.Microphone() as source:
         # Mic captured
         audio = voice_recognizer.listen(source)
-
 
     voice_text = voice_recognizer.recognize_google(audio, language="ru")
 
@@ -45,12 +38,14 @@ def handle_command(user_text):
         replica = replicas[user_text]
         reply(replica)
         
-        if replica == 'Песня для вас, раз такое дело':
-            playsound(sys.path[0] + '/../zveri.mp3')
+        if replica == 'Пока!':
             exit()
+        if replica == 'Играю яндекс':
+            play_yandex_last_favourite_track()
 
     except KeyError:
         reply("Не понимаю Вас")
+
 
 # starting function
 def start():
