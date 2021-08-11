@@ -3,7 +3,7 @@ import speech_recognition as sr
 from yandex_player import play_yandex_last_favourite_track
 from replicas_dictionary import dictionary
 
-google_russian_female_voice = 27
+GOOGLE_RUSSIAN_FEMALE_VOICE = 27
 
 replicas = dictionary()
 
@@ -27,8 +27,8 @@ def user_input():
 def reply(text):
     print("Ассистент:", text)
     
-    ttsEngine.say(str(text))
-    ttsEngine.runAndWait()
+    tts_engine.say(str(text))
+    tts_engine.runAndWait()
 
 
 def handle_command(user_text):
@@ -47,8 +47,13 @@ def handle_command(user_text):
         reply("Не понимаю Вас")
 
 
-# starting function
-def start():
+def main():
+    global tts_engine
+    tts_engine = pyttsx3.init()
+
+    voices = tts_engine.getProperty("voices")
+    tts_engine.setProperty("voice", voices[GOOGLE_RUSSIAN_FEMALE_VOICE].id)
+
     while True:
         try:
             user_text = user_input()
@@ -56,10 +61,6 @@ def start():
         except sr.UnknownValueError:
             reply('Вас не слышно')
 
+
 if __name__ == "__main__":
-
-    ttsEngine = pyttsx3.init()
-    voices = ttsEngine.getProperty("voices")
-    ttsEngine.setProperty("voice", voices[google_russian_female_voice].id)
-
-    start()
+    main()
