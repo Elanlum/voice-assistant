@@ -31,19 +31,23 @@ def reply(text):
     tts_engine.runAndWait()
 
 
-def handle_command(user_text):
+def handle_replica(user_text):
     user_text = user_text.lower()
 
     try:
         replica = replicas[user_text]
-        reply(replica)
         
         if replica == 'Пока!':
+            reply(replica)
             exit()
         if replica == 'Играю яндекс':
+            reply(replica)
             play_yandex_last_favourite_track()
         if replica == 'Температура сегодня':
-            reply(str(get_weather()) + ' градусов')
+            temperature = get_weather()
+            reply(replica + ' ' + str(temperature) + ' градусов')
+
+        reply(replica)
 
     except KeyError:
         reply("Не понимаю Вас")
@@ -59,7 +63,7 @@ def main():
     while True:
         try:
             user_text = user_input()
-            handle_command(user_text)
+            handle_replica(user_text)
         except sr.UnknownValueError:
             reply('Вас не слышно')
 

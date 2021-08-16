@@ -7,11 +7,11 @@ CRED_PROPERTIES = 'cred.properties'
 WEATHER_BLOCK = 'OpenWeather'
 
 
-def location():
+def get_rerion_city():
     info = get_location()
     city = info['city']
     country = info['country']
-    return city + ', ' + country
+    return city + ',' + country
 
 
 def get_weather():
@@ -26,8 +26,8 @@ def get_weather():
     owm = OWM(api_key, config)
 
     mgr = owm.weather_manager()
-
-    weather_data = mgr.weather_at_place(location()).get_weather
+    location = get_rerion_city()
+    weather_data = mgr.weather_at_place(location).weather
 
     temp_dict_celsius = weather_data.temperature('celsius')
     temp_avg = temp_dict_celsius['temp']
