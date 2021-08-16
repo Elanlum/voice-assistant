@@ -14,7 +14,7 @@ def location():
     return city + ', ' + country
 
 
-def weather():
+def get_weather():
     config = configparser.RawConfigParser()
     config.read(CRED_PROPERTIES)
 
@@ -27,7 +27,7 @@ def weather():
 
     mgr = owm.weather_manager()
 
-    weather_data = mgr.weather_at_place(location()).weather
+    weather_data = mgr.weather_at_place(location()).get_weather
 
     temp_dict_celsius = weather_data.temperature('celsius')
     temp_avg = temp_dict_celsius['temp']

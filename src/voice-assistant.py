@@ -1,11 +1,10 @@
 import pyttsx3
 import speech_recognition as sr
 from yandex_player import play_yandex_last_favourite_track
-from weather import weather
+from weather import get_weather
 from replicas_dictionary import dictionary
 
 GOOGLE_RUSSIAN_FEMALE_VOICE = 27
-
 replicas = dictionary()
 
 
@@ -44,8 +43,7 @@ def handle_command(user_text):
         if replica == 'Играю яндекс':
             play_yandex_last_favourite_track()
         if replica == 'Температура сегодня':
-            temp = weather()
-            reply(str(temp) + ' градусов')
+            reply(str(get_weather()) + ' градусов')
 
     except KeyError:
         reply("Не понимаю Вас")
