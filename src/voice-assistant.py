@@ -1,24 +1,9 @@
 import pyttsx3
 import speech_recognition as sr
 import replica_handler
+import voice_recognizer
 
 GOOGLE_RUSSIAN_FEMALE_VOICE = 27
-
-
-def recognize_voice():
-    print("Скажите что-нибудь >>>")
-
-    # We will transform this function later to get voice
-    voice_recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        # Mic captured
-        audio = voice_recognizer.listen(source)
-
-    voice_text = voice_recognizer.recognize_google(audio, language="ru")
-
-    print("Вы сказали:", voice_text)
-
-    return voice_text
 
 
 def config_tts():
@@ -33,7 +18,7 @@ def main():
 
     while True:
         try:
-            user_text = recognize_voice()
+            user_text = voice_recognizer.recognize_voice()
             replica_handler.handle_replica(user_text, tts_engine)
         except sr.UnknownValueError:
             replica_handler.reply('Вас не слышно', tts_engine)
