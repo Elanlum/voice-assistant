@@ -20,8 +20,15 @@ def get_weather():
 
     mgr = owm.weather_manager()
     location = location_info.get_region_city()
-    weather_data = mgr.weather_at_place(location).weather
+    return mgr.weather_at_place(location).weather
 
+
+def get_avg_temperature():
+    weather_data = get_weather()
     temp_dict_celsius = weather_data.temperature('celsius')
     temp_avg = temp_dict_celsius['temp']
     return round(temp_avg)
+
+
+def get_weather_status():
+    return get_weather().detailed_status
