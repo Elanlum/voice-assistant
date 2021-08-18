@@ -1,6 +1,8 @@
 from yandex_player import play_yandex_last_favourite_track
 from weather import get_weather
 from replicas_dictionary import dictionary
+import location_info
+import translator_service
 
 replicas = dictionary()
 
@@ -25,8 +27,10 @@ def handle_replica(user_text, tts_engine):
             reply(replica, tts_engine)
             play_yandex_last_favourite_track()
         if replica == 'Температура сегодня':
+            city = location_info.get_city_name()
+            city_local = translator_service.translate(city)
             temperature = get_weather()
-            reply(replica + ' ' + str(temperature) + ' градусов', tts_engine)
+            reply('В городе ' + city_local + ' ' + replica + ' ' + str(temperature) + ' градусов', tts_engine)
         else:
             reply(replica, tts_engine)
 
