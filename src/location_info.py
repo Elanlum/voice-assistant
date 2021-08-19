@@ -14,6 +14,6 @@ def get_region_city():
     return city + ',' + country
 
 
-def get_city_name():
+def locate_city():
     info = get_location()
     return info['city']

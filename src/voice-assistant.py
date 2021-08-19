@@ -1,7 +1,8 @@
 import pyttsx3
 import speech_recognition as sr
-import replica_handler
-import voice_recognizer
+from replica_handler import handle_replica
+from replier import reply
+from voice_recognizer import recognize_voice
 
 GOOGLE_RUSSIAN_FEMALE_VOICE = 27
 
@@ -18,10 +19,10 @@ def main():
 
     while True:
         try:
-            user_text = voice_recognizer.recognize_voice()
-            replica_handler.handle_replica(user_text, tts_engine)
+            user_text = recognize_voice()
+            handle_replica(user_text, tts_engine)
         except sr.UnknownValueError:
-            replica_handler.reply('Вас не слышно', tts_engine)
+            reply('Вас не слышно', tts_engine)
 
 
 if __name__ == "__main__":
