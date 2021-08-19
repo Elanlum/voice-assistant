@@ -29,3 +29,4 @@ weather.apikey = apikey
 * Show current weather condition based on current location (! Done 08.19.21)
 * Create internalization module
 * Packaging of the application to something (probably app)
+* Extract all app settings to properties file
