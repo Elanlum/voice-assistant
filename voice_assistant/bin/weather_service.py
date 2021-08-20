@@ -8,15 +8,15 @@ WEATHER_BLOCK = 'OpenWeather'
 
 
 def config_owm():
-    config = configparser.RawConfigParser()
-    config.read(CRED_PROPERTIES)
+    cred_config = configparser.RawConfigParser()
+    cred_config.read(CRED_PROPERTIES)
 
-    if config.has_option(WEATHER_BLOCK, 'weather.apikey'):
-        api_key = config.get(WEATHER_BLOCK, 'weather.apikey')
+    if cred_config.has_option(WEATHER_BLOCK, 'weather.apikey'):
+        api_key = cred_config.get(WEATHER_BLOCK, 'weather.apikey')
 
-    config = get_default_config()
-    config['language'] = 'ru'
-    return OWM(api_key, config)
+    owm_config = get_default_config()
+    owm_config['language'] = 'ru'
+    return OWM(api_key, owm_config)
 
 
 def get_weather_info(city):
@@ -34,8 +34,8 @@ def get_weather_local_info():
 
 def get_avg_temperature(city):
     weather_info = get_weather_info(city)
-    temp_dict_celsius = weather_info.temperature('celsius')
-    temp_avg = temp_dict_celsius['temp']
+    temperature_info_celsius = weather_info.temperature('celsius')
+    temp_avg = temperature_info_celsius['temp']
     return round(temp_avg)
 
 

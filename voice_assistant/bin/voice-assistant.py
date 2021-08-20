@@ -9,8 +9,8 @@ GOOGLE_RUSSIAN_FEMALE_VOICE = 27
 
 def config_tts():
     tts_engine = pyttsx3.init()
-    voices = tts_engine.getProperty("voices")
-    tts_engine.setProperty("voice", voices[GOOGLE_RUSSIAN_FEMALE_VOICE].id)
+    voices = tts_engine.getProperty('voices')
+    tts_engine.setProperty('voice', voices[GOOGLE_RUSSIAN_FEMALE_VOICE].id)
     return tts_engine
 
 
@@ -25,5 +25,5 @@ def main():
             reply('Вас не слышно', tts_engine)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
