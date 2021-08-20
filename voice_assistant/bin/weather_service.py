@@ -3,7 +3,7 @@ import configparser
 from pyowm.utils.config import get_default_config
 import location_info
 
-CRED_PROPERTIES = 'cred.properties'
+CRED_PROPERTIES = '../cred.properties'
 WEATHER_BLOCK = 'OpenWeather'
 
 

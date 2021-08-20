@@ -5,7 +5,7 @@ from playsound import playsound
 import os
 import sys
 
-CRED_PROPERTIES = 'cred.properties'
+CRED_PROPERTIES = '../cred.properties'
 YANDEX_BLOCK = 'Yandex'
 TRACK_NAME = 'yandex_track.mp3'
 
