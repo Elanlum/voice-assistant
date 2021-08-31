@@ -1,5 +1,5 @@
 import speech_recognition as sr
-from cred_config_service import read_app_config
+from config_service import read_app_config
 
 config = read_app_config()
 language = config.get('Global', 'app.language')

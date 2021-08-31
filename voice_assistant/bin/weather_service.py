@@ -1,7 +1,7 @@
 from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
 import location_info
-from cred_config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
+from config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
 
 cred_config = read_credentials()
 app_config = read_app_config()

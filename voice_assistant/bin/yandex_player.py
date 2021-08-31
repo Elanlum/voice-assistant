@@ -3,7 +3,7 @@ from playsound import playsound
 
 import os
 import sys
-from cred_config_service import read_credentials, YANDEX_BLOCK, YANDEX_TOKEN, YANDEX_LOGIN, YANDEX_PWD, TRACK_NAME, \
+from config_service import read_credentials, YANDEX_BLOCK, YANDEX_TOKEN, YANDEX_LOGIN, YANDEX_PWD, TRACK_NAME, \
     CRED_PROPERTIES
 
 config = read_credentials()
