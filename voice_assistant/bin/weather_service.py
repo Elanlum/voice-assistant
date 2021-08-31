@@ -1,17 +1,15 @@
 from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
 import location_info
-import cred_config_service as conf
+from cred_config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
 
-cred_config = conf.read_credentials()
-app_config = conf.read_app_config()
-weather_block = conf.WEATHER_BLOCK
-api_key_prop = conf.WEATHER_APIKEY
+cred_config = read_credentials()
+app_config = read_app_config()
 
 
 def config_owm():
-    if cred_config.has_option(weather_block, api_key_prop):
-        api_key = cred_config.get(weather_block, api_key_prop)
+    if cred_config.has_option(WEATHER_BLOCK, WEATHER_APIKEY):
+        api_key = cred_config.get(WEATHER_BLOCK, WEATHER_APIKEY)
 
     owm_config = get_default_config()
     owm_config['language'] = app_config.get('Global', 'app.language')

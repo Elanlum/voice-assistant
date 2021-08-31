@@ -3,24 +3,18 @@ from playsound import playsound
 
 import os
 import sys
-import cred_config_service as cred
+from cred_config_service import read_credentials, YANDEX_BLOCK, YANDEX_TOKEN, YANDEX_LOGIN, YANDEX_PWD, TRACK_NAME, \
+    CRED_PROPERTIES
 
-config = cred.read_credentials()
-
-yandex_block = cred.YANDEX_BLOCK
-yandex_token = cred.YANDEX_TOKEN
-yandex_login = cred.YANDEX_LOGIN
-yandex_pwd = cred.YANDEX_PWD
-track_name = cred.TRACK_NAME
-cred_file = cred.CRED_PROPERTIES
+config = read_credentials()
 
 
 def yandex_authorize():
-    if config.has_option(yandex_block, yandex_token):
-        token = config.get(yandex_block, yandex_token)
+    if config.has_option(YANDEX_BLOCK, YANDEX_TOKEN):
+        token = config.get(YANDEX_BLOCK, YANDEX_TOKEN)
     else:
-        login = config.get(yandex_block, yandex_login)
-        pwd = config.get(yandex_block, yandex_pwd)
+        login = config.get(YANDEX_BLOCK, YANDEX_LOGIN)
+        pwd = config.get(YANDEX_BLOCK, YANDEX_PWD)
 
         token = Client().generate_token_by_username_and_password(login, pwd)
         write_token(token)
@@ -31,13 +25,13 @@ def yandex_authorize():
 def play_yandex_last_favourite_track():
     client = yandex_authorize()
 
-    client.users_likes_tracks()[0].fetch_track().download(track_name)
-    playsound(sys.path[0] + '/' + track_name)
-    os.remove(track_name)
+    client.users_likes_tracks()[0].fetch_track().download(TRACK_NAME)
+    playsound(sys.path[0] + '/' + TRACK_NAME)
+    os.remove(TRACK_NAME)
 
 
 def write_token(token):
-    config.set(yandex_block, yandex_token, token)
-    with open(cred_file, 'w') as configfile:
+    config.set(YANDEX_BLOCK, YANDEX_TOKEN, token)
+    with open(CRED_PROPERTIES, 'w') as configfile:
         config.write(configfile)
 
