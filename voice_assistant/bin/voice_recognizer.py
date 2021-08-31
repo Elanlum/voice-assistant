@@ -6,7 +6,7 @@ def recognize_voice():
 
     voice_recognizer = sr.Recognizer()
     with sr.Microphone() as source:
-        # Mic captured
+        voice_recognizer.adjust_for_ambient_noise(source)
         audio = voice_recognizer.listen(source)
 
     voice_text = voice_recognizer.recognize_google(audio, language='ru')
