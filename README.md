@@ -26,8 +26,9 @@ weather.apikey = apikey
 
 * Show current weather condition based on current location (! Done 08.19.21)
 * Show weather conditions based on second command with city name (! Done 08.20.21)
+* Extract all app settings to properties file(! Done 09.01.21)
+* Create a way of stopping music without terminating app
 * Show current time based on current location
 * Better location definition, not based on ip request
-* Create internalization module
 * Packaging of the application to something (probably app)
-* Extract all app settings to properties file
+* Create internalization module and at least two dictionaries for commands
