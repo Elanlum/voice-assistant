@@ -15,7 +15,7 @@ def handle_replica(user_text, tts_engine):
 
         if replica == 'Пока!':
             reply_bye(replica, tts_engine)
-        if replica == 'Играю яндекс':
+        if replica == 'Играю Яндекс':
             reply_music(replica, tts_engine)
         if replica == 'Температура сегодня':
             reply('Какой город интересует?', tts_engine)
