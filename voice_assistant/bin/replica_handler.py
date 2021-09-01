@@ -1,5 +1,5 @@
 from pyowm.commons.exceptions import NotFoundError
-from replicas_dictionary import dictionary
+from replicas_dictionary_ru import dictionary
 from replier import reply, reply_weather, reply_music, reply_bye
 from voice_recognizer import recognize_voice
 from translator_service import translate_ru_en
