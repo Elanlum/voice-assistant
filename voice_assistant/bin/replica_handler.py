@@ -20,8 +20,7 @@ def handle_replica(user_text, tts_engine):
         if replica == 'Температура сегодня':
             reply('Какой город интересует?', tts_engine)
             try:
-                user_text = recognize_voice()
-                user_text_en = translate_ru_en(user_text)
+                user_text_en = translate_ru_en(recognize_voice())
                 reply_weather(user_text_en, tts_engine)
             except NotFoundError:
                 reply('Город не найден', tts_engine)
@@ -29,4 +28,4 @@ def handle_replica(user_text, tts_engine):
             reply(replica, tts_engine)
 
     except KeyError:
-        reply("Не понимаю Вас", tts_engine)
+        reply('Не понимаю Вас', tts_engine)
