@@ -3,6 +3,7 @@ from config_service import read_app_config
 
 config = read_app_config()
 language = config.get('Global', 'app.language')
+phrase_time_limit = config.get('Global, phrase.time.limit')
 
 
 def recognize_voice():
@@ -11,7 +12,7 @@ def recognize_voice():
     voice_recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         voice_recognizer.adjust_for_ambient_noise(source)
-        audio = voice_recognizer.listen(source, None, 5)
+        audio = voice_recognizer.listen(source, None, phrase_time_limit)
 
     voice_text = voice_recognizer.recognize_google(audio, language=language)
 
