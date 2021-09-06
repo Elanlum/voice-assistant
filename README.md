@@ -29,6 +29,7 @@ weather.apikey = apikey
 * Extract all app settings to properties file(! Done 09.01.21)
 * Create a way of stopping music without terminating app
 * Show current time based on current location
+* Add support of replicas based on selected language and resource bundles
 * Better location definition, not based on ip request
 * Packaging of the application to something (probably app)
 * Create internalization module and at least two dictionaries for commands
