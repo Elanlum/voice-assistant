@@ -2,8 +2,8 @@ import speech_recognition as sr
 from config_service import read_app_config
 
 app_config = read_app_config()
-language = app_config.get('Global', 'app.language')
 phrase_time_limit = app_config.get('Global', 'phrase.time.limit')
+language = app_config.get('Global', 'app.language')
 
 
 def recognize_voice():

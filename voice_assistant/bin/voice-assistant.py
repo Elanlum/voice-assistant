@@ -3,14 +3,19 @@ import speech_recognition as sr
 from replica_handler import handle_replica
 from replier import reply
 from voice_recognizer import recognize_voice
+from config_service import read_app_config
 
-GOOGLE_RUSSIAN_FEMALE_VOICE = 27
+RUSSIAN_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.milena.premium'
+ENGLISH_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.Victoria'
+
+app_config = read_app_config()
+language = app_config.get('Global', 'app.language')
 
 
 def config_tts():
     tts_engine = pyttsx3.init()
-    voices = tts_engine.getProperty('voices')
-    tts_engine.setProperty('voice', voices[GOOGLE_RUSSIAN_FEMALE_VOICE].id)
+    voice = RUSSIAN_FEMALE_VOICE if language == 'ru' else ENGLISH_FEMALE_VOICE
+    tts_engine.setProperty('voice', voice)
     return tts_engine
 
 
@@ -22,7 +27,8 @@ def main():
             user_text = recognize_voice()
             handle_replica(user_text, tts_engine)
         except sr.UnknownValueError:
-            reply('Вас не слышно', tts_engine)
+            print('Вас не слышно')
+            # reply('Вас не слышно', tts_engine)
 
 
 if __name__ == '__main__':
