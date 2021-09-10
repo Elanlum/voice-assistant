@@ -9,6 +9,6 @@ def dictionary_en():
         'turn on yandex': ['turn on yandex', 'Playing Yandex'],
         'what is the weather': ['what is the weather', 'The temperature today'],
         'no replica': ['I don\'t get it', 'I don\'t get it'],
-        'what city': ['Which city', 'Which city'],
+        'select city': ['Which city', 'Which city'],
         'city not found': ['City not found', 'City not found']
     }

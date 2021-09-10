@@ -31,10 +31,10 @@ def handle_replica(user_text, tts_engine):
 
         if replica == 'bye':
             reply_bye(response, tts_engine)
-        if replica == 'play yandex':
+        if replica == 'play yandex' or replica == 'music yandex' or replica == 'turn on yandex':
             reply_music(response, tts_engine)
         if replica == 'what is the weather':
-            reply(replicas['what city'][0], tts_engine)
+            reply(replicas['select city'][0], tts_engine)
             try:
                 user_text_en = translate_ru_en(recognize_voice())
                 reply_weather(user_text_en, tts_engine)
