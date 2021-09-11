@@ -1,14 +1,18 @@
+from util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_REPLICA, SELECT_CITY, \
+    CITY_NOT_FOUND
+
+
 def dictionary_ru():
     return {
         'hello': ['привет', 'Привет-привет!'],
-        'bye': ['пока', 'Пока!'],
+        BYE: ['пока', 'Пока!'],
         'how are you': ['как дела', 'Всё хорошо, спасибо'],
         'how is your day': ['как день', 'Хороший денёк'],
-        'music yandex': ['музыка яндекс', 'Играю Яндекс'],
-        'play yandex': ['играй яндекс', 'Играю Яндекс'],
-        'turn on yandex': ['включи яндекс', 'Играю Яндекс'],
-        'what is the weather': ['какая погода', 'Температура сегодня'],
-        'no replica': ['Не понимаю Вас', 'Не понимаю Вас'],
-        'select city': ['Какой город интересует', 'Какой город интересует'],
-        'city not found': ['Город не найден', 'Город не найден']
+        MUSIC_YANDEX: ['музыка яндекс', 'Играю Яндекс'],
+        PLAY_YANDEX: ['играй яндекс', 'Играю Яндекс'],
+        TURN_ON_YANDEX: ['включи яндекс', 'Играю Яндекс'],
+        WHAT_WEATHER: ['какая погода', 'Температура сегодня'],
+        NO_REPLICA: ['Не понимаю Вас', 'Не понимаю Вас'],
+        SELECT_CITY: ['Какой город интересует', 'Какой город интересует'],
+        CITY_NOT_FOUND: ['Город не найден', 'Город не найден']
     }

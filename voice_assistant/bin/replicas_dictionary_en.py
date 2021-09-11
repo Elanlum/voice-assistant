@@ -1,14 +1,18 @@
+from util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_REPLICA, SELECT_CITY, \
+    CITY_NOT_FOUND
+
+
 def dictionary_en():
     return {
         'hello': ['hello', 'Hello-hello!'],
-        'bye': ['bye', 'Bye!'],
+        BYE: ['bye', 'Bye!'],
         'how are you': ['how are you', 'I am fine, thanks'],
         'how is your day': ['how is your day', 'It is quite good'],
-        'music yandex': ['music yandex', 'Playing Yandex'],
-        'play yandex': ['play yandex', 'Playing Yandex'],
-        'turn on yandex': ['turn on yandex', 'Playing Yandex'],
-        'what is the weather': ['what is the weather', 'The temperature today'],
-        'no replica': ['I don\'t get it', 'I don\'t get it'],
-        'select city': ['Which city', 'Which city'],
-        'city not found': ['City not found', 'City not found']
+        MUSIC_YANDEX: ['music yandex', 'Playing Yandex'],
+        PLAY_YANDEX: ['play yandex', 'Playing Yandex'],
+        TURN_ON_YANDEX: ['turn on yandex', 'Playing Yandex'],
+        WHAT_WEATHER: ['what is the weather', 'The temperature today'],
+        NO_REPLICA: ['I don\'t get it', 'I don\'t get it'],
+        SELECT_CITY: ['Which city', 'Which city'],
+        CITY_NOT_FOUND: ['City not found', 'City not found']
     }
