@@ -16,39 +16,40 @@ replicas = dict(replicas)
 
 def handle_replica(user_text, tts_engine):
     user_text = user_text.lower()
+    (request, response) = get_request_response_tuple(user_text)
 
-    # TODO: get rid of this
-    response = ''
-    replica = ''
-
-    # TODO: extract to a separate function returning tuple of (request, response)
-    for r in replicas.keys():
-        replica = r
-        if select_request_replica(r) == user_text:
-            response = select_response_replica(r)
-            break
-        else:
-            response = select_response_replica(const.NO_REPLICA)
-
-    if replica == const.BYE:
+    if request == const.BYE:
         reply_bye(response, tts_engine)
-    if replica == const.PLAY_YANDEX or replica == const.MUSIC_YANDEX or replica == const.TURN_ON_YANDEX:
+    if request == const.PLAY_YANDEX or request == const.MUSIC_YANDEX or request == const.TURN_ON_YANDEX:
         reply_music(response, tts_engine)
-    if replica == const.WHAT_WEATHER:
+    if request == const.WHAT_WEATHER:
         # TODO: extract logic on selecting city to a separate service, ask city until 'forget it' phrase
-        reply(select_request_replica(const.SELECT_CITY), tts_engine)
+        reply(get_request_replica(const.SELECT_CITY), tts_engine)
         try:
             user_text_en = translate_ru_en(recognize_voice())
             reply_weather(user_text_en, tts_engine)
         except NotFoundError:
-            reply(select_request_replica(const.CITY_NOT_FOUND), tts_engine)
+            reply(get_request_replica(const.CITY_NOT_FOUND), tts_engine)
     else:
         reply(response, tts_engine)
 
 
-def select_request_replica(replica):
+def get_request_replica(replica):
     return replicas[replica][0]
 
 
-def select_response_replica(replica):
+def get_response_replica(replica):
     return replicas[replica][1]
+
+
+def get_request_response_tuple(user_text):
+    request = None
+    response = None
+
+    for request in replicas.keys():
+        if get_request_replica(request) == user_text:
+            response = get_response_replica(request)
+            return request, response
+
+        response = get_response_replica(const.NO_REPLICA)
+    return request, response
