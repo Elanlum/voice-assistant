@@ -23,13 +23,7 @@ def handle_replica(user_text, tts_engine):
     if request == const.PLAY_YANDEX or request == const.MUSIC_YANDEX or request == const.TURN_ON_YANDEX:
         reply_music(response, tts_engine)
     if request == const.WHAT_WEATHER:
-        # TODO: extract logic on selecting city to a separate service, ask city until 'forget it' phrase
-        reply(get_request_replica(const.SELECT_CITY), tts_engine)
-        try:
-            user_text_en = translate_ru_en(recognize_voice())
-            reply_weather(user_text_en, tts_engine)
-        except NotFoundError:
-            reply(get_request_replica(const.CITY_NOT_FOUND), tts_engine)
+        select_city_and_reply(tts_engine)
     else:
         reply(response, tts_engine)
 
@@ -53,3 +47,20 @@ def get_request_response_tuple(user_text):
 
         response = get_response_replica(const.NO_REPLICA)
     return request, response
+
+
+def select_city_and_reply(tts_engine):
+    city_found = False
+    while not city_found:
+        reply(get_request_replica(const.SELECT_CITY), tts_engine)
+        try:
+            user_text = recognize_voice()
+            if user_text == get_request_replica(const.CANCEL):
+                reply(get_response_replica(const.CANCEL), tts_engine)
+                return
+
+            user_text_en = translate_ru_en(user_text)
+            reply_weather(user_text_en, tts_engine)
+            city_found = True
+        except NotFoundError:
+            reply(get_response_replica(const.CITY_NOT_FOUND), tts_engine)
