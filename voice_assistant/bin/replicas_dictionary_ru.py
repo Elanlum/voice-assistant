@@ -1,5 +1,5 @@
 from util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_REPLICA, SELECT_CITY, \
-    CITY_NOT_FOUND
+    CITY_NOT_FOUND, CANCEL
 
 
 def dictionary_ru():
@@ -14,5 +14,6 @@ def dictionary_ru():
         WHAT_WEATHER: ['какая погода', 'Температура сегодня'],
         NO_REPLICA: ['Не понимаю Вас', 'Не понимаю Вас'],
         SELECT_CITY: ['Какой город интересует', 'Какой город интересует'],
-        CITY_NOT_FOUND: ['Город не найден', 'Город не найден']
+        CITY_NOT_FOUND: ['Город не найден', 'Город не найден'],
+        CANCEL: ['отмена', 'Действие отменено']
     }
