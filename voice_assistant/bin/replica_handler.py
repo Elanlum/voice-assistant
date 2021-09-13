@@ -50,9 +50,10 @@ def get_request_response_tuple(user_text):
 
 
 def select_city_and_reply(tts_engine):
+    reply(get_request_replica(const.SELECT_CITY), tts_engine)
+
     city_found = False
     while not city_found:
-        reply(get_request_replica(const.SELECT_CITY), tts_engine)
         try:
             user_text = recognize_voice()
             if user_text == get_request_replica(const.CANCEL):

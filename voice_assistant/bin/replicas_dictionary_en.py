@@ -14,6 +14,6 @@ def dictionary_en():
         WHAT_WEATHER: ['what is the weather', 'The temperature today'],
         NO_REPLICA: ['I don\'t get it', 'I don\'t get it'],
         SELECT_CITY: ['Which city', 'Which city'],
-        CITY_NOT_FOUND: ['City not found', 'City not found'],
+        CITY_NOT_FOUND: ['City not found', 'City not found, try again'],
         CANCEL: ['Cancel', 'Action cancelled']
     }
