@@ -27,6 +27,7 @@ def main():
             user_text = recognize_voice()
             handle_replica(user_text, tts_engine)
         except sr.UnknownValueError:
+            # TODO: Internationalize this
             print('Вас не слышно')
             # reply('Вас не слышно', tts_engine)
 

@@ -10,6 +10,7 @@ def reply(text, tts_engine):
     tts_engine.runAndWait()
 
 
+# TODO: make this ready for I18n
 def reply_weather(city, tts_engine):
     city_local_name = translate_en_ru(city)
     temperature = get_avg_temperature(city)
