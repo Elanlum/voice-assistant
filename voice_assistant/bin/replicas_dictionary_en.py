@@ -2,6 +2,8 @@ from util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_
     CITY_NOT_FOUND, CANCEL
 
 
+# Dictionary consists of replicas with correspondent array of request and response:
+# replica : [request, response]
 def dictionary_en():
     return {
         'hello': ['hello', 'Hello-hello!'],

@@ -15,53 +15,53 @@ replicas = dict(replicas)
 
 
 def handle_replica(user_text, tts_engine):
-    user_text = user_text.lower()
-    (request, response) = get_request_response_tuple(user_text)
+    request = user_text.lower()
+    (replica, response) = get_replica_and_response_tuple(request)
 
-    if request == const.BYE:
+    if replica == const.BYE:
         reply_bye(response, tts_engine)
-    if request == const.PLAY_YANDEX or request == const.MUSIC_YANDEX or request == const.TURN_ON_YANDEX:
+    if replica == const.PLAY_YANDEX or replica == const.MUSIC_YANDEX or replica == const.TURN_ON_YANDEX:
         reply_music(response, tts_engine)
-    if request == const.WHAT_WEATHER:
+    if replica == const.WHAT_WEATHER:
         select_city_and_reply(tts_engine)
     else:
         reply(response, tts_engine)
 
 
-def get_request_replica(replica):
+def get_request(replica):
     return replicas[replica][0]
 
 
-def get_response_replica(replica):
+def get_response(replica):
     return replicas[replica][1]
 
 
-def get_request_response_tuple(user_text):
-    request = None
+def get_replica_and_response_tuple(request):
+    replica = None
     response = None
 
-    for request in replicas.keys():
-        if get_request_replica(request) == user_text:
-            response = get_response_replica(request)
-            return request, response
+    for replica in replicas.keys():
+        if get_request(replica) == request:
+            response = get_response(replica)
+            return replica, response
 
-        response = get_response_replica(const.NO_REPLICA)
-    return request, response
+        response = get_response(const.NO_REPLICA)
+    return replica, response
 
 
 def select_city_and_reply(tts_engine):
-    reply(get_request_replica(const.SELECT_CITY), tts_engine)
+    reply(get_request(const.SELECT_CITY), tts_engine)
 
     city_found = False
     while not city_found:
         try:
             user_text = recognize_voice()
-            if user_text == get_request_replica(const.CANCEL):
-                reply(get_response_replica(const.CANCEL), tts_engine)
+            if user_text == get_request(const.CANCEL):
+                reply(get_response(const.CANCEL), tts_engine)
                 return
 
             user_text_en = translate_ru_en(user_text)
             reply_weather(user_text_en, tts_engine)
             city_found = True
         except NotFoundError:
-            reply(get_response_replica(const.CITY_NOT_FOUND), tts_engine)
+            reply(get_response(const.CITY_NOT_FOUND), tts_engine)
