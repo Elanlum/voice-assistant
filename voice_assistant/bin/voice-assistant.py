@@ -6,7 +6,7 @@ from voice_recognizer import recognize_voice
 from config_service import read_app_config
 
 RUSSIAN_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.milena.premium'
-ENGLISH_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.Victoria'
+ENGLISH_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.samantha'
 
 app_config = read_app_config()
 language = app_config.get('Global', 'app.language')
