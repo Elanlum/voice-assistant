@@ -1,6 +1,6 @@
 import pyttsx3
 import speech_recognition as sr
-from replica_handler import handle_replica
+from phrase_handler import handle_phrase
 from replier import reply
 from voice_recognizer import recognize_voice
 from config_service import read_app_config
@@ -25,7 +25,7 @@ def main():
     while True:
         try:
             user_text = recognize_voice()
-            handle_replica(user_text, tts_engine)
+            handle_phrase(user_text, tts_engine)
         except sr.UnknownValueError:
             # TODO: Internationalize this
             print('Вас не слышно')

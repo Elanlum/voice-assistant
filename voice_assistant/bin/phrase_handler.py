@@ -1,6 +1,6 @@
 from pyowm.commons.exceptions import NotFoundError
-from replicas_dictionary_ru import dictionary_ru
-from replicas_dictionary_en import dictionary_en
+from phrase_dictionary_ru import dictionary_ru
+from phrase_dictionary_en import dictionary_en
 from replier import reply, reply_weather, reply_music, reply_bye
 from voice_recognizer import recognize_voice
 from translator_service import translate_ru_en
@@ -10,43 +10,43 @@ import util.constants as const
 app_config = read_app_config()
 language = app_config.get('Global', 'app.language')
 
-replicas = dictionary_ru() if language == 'ru' else dictionary_en()
-replicas = dict(replicas)
+phrases = dictionary_ru() if language == 'ru' else dictionary_en()
+phrases = dict(phrases)
 
 
-def handle_replica(user_text, tts_engine):
+def handle_phrase(user_text, tts_engine):
     request = user_text.lower()
-    (replica, response) = get_replica_and_response_tuple(request)
+    (phrase, response) = get_phrase_and_response_tuple(request)
 
-    if replica == const.BYE:
+    if phrase == const.BYE:
         reply_bye(response, tts_engine)
-    if replica == const.PLAY_YANDEX or replica == const.MUSIC_YANDEX or replica == const.TURN_ON_YANDEX:
+    if phrase == const.PLAY_YANDEX or phrase == const.MUSIC_YANDEX or phrase == const.TURN_ON_YANDEX:
         reply_music(response, tts_engine)
-    if replica == const.WHAT_WEATHER:
+    if phrase == const.WHAT_WEATHER:
         select_city_and_reply(tts_engine)
     else:
         reply(response, tts_engine)
 
 
-def get_request(replica):
-    return replicas[replica][0]
+def get_request(phrase):
+    return phrases[phrase][0]
 
 
-def get_response(replica):
-    return replicas[replica][1]
+def get_response(phrase):
+    return phrases[phrase][1]
 
 
-def get_replica_and_response_tuple(request):
-    replica = None
+def get_phrase_and_response_tuple(request):
+    phrase = None
     response = None
 
-    for replica in replicas.keys():
-        if get_request(replica) == request:
-            response = get_response(replica)
-            return replica, response
+    for phrase in phrases.keys():
+        if get_request(phrase) == request:
+            response = get_response(phrase)
+            return phrase, response
 
-        response = get_response(const.NO_REPLICA)
-    return replica, response
+        response = get_response(const.NO_PHRASE)
+    return phrase, response
 
 
 def select_city_and_reply(tts_engine):

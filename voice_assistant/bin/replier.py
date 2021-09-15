@@ -26,11 +26,12 @@ def reply_weather(city, tts_engine):
     reply(''.join(reply_list), tts_engine)
 
 
-def reply_music(replica, tts_engine):
-    reply(replica, tts_engine)
+def reply_music(phrase, tts_engine):
+    reply(phrase, tts_engine)
+    # TODO: playing music causes an extra phrase said by assistant after playing
     play_yandex_last_favourite_track()
 
 
-def reply_bye(replica, tts_engine):
-    reply(replica, tts_engine)
+def reply_bye(phrase, tts_engine):
+    reply(phrase, tts_engine)
     exit()

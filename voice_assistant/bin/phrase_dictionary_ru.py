@@ -1,9 +1,9 @@
-from util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_REPLICA, SELECT_CITY, \
+from util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_PHRASE, SELECT_CITY, \
     CITY_NOT_FOUND, CANCEL
 
 
-# Dictionary consists of replicas with correspondent array of request and response:
-# replica : [request, response]
+# Dictionary consists of phrases with correspondent array of request and response:
+# phrase : [request, response]
 def dictionary_ru():
     return {
         'hello': ['привет', 'Привет-привет!'],
@@ -15,7 +15,7 @@ def dictionary_ru():
         PLAY_YANDEX: ['играй яндекс', 'Играю Яндекс'],
         TURN_ON_YANDEX: ['включи яндекс', 'Играю Яндекс'],
         WHAT_WEATHER: ['какая погода', 'Температура сегодня'],
-        NO_REPLICA: ['Не понимаю Вас', 'Не понимаю Вас'],
+        NO_PHRASE: ['Не понимаю Вас', 'Не понимаю Вас'],
         SELECT_CITY: ['Какой город интересует', 'Какой город интересует'],
         CITY_NOT_FOUND: ['Город не найден', 'Город не найден, попробуйте снова'],
         CANCEL: ['отмена', 'Действие отменено']
