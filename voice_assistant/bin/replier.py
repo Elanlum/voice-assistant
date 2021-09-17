@@ -4,6 +4,7 @@ from yandex_player import play_yandex_last_favourite_track
 
 
 def reply(text, tts_engine):
+    # TODO: Internationalize this
     print('Ассистент:', text)
 
     tts_engine.say(str(text))
