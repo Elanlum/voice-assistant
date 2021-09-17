@@ -1,4 +1,4 @@
-## Python-based voice-assistant. Currently launches in Terminal, recognizes several phrases in Russian.
+## Python-based voice-assistant. Currently, launches in Terminal, recognizes several phrases in English and Russian.
 
 ## Usage of voice assistant features
 
@@ -28,6 +28,7 @@ weather.apikey = apikey
 * Show weather conditions based on second command with city name (! Done 08.20.21)
 * Extract all app settings to properties file(! Done 09.01.21)
 * Create internalization and at least two dictionaries for commands (! Done 09.09.21)
+* Create graph structure for replies handling
 * Create a way of stopping music without terminating app
 * Show current time based on current location
 * Add support of phrases based on selected language and resource bundles
