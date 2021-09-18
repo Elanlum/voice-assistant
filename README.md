@@ -34,3 +34,18 @@ weather.apikey = apikey
 * Add support of phrases based on selected language and resource bundles
 * Better location definition, not based on ip request
 * Packaging of the application to something (probably app)
+
+### Developing notes:
+
+To launch project on Mac OS or Windows, you will need to install pyaudio.
+For instance, if you are using pip:
+
+Mac OS: 
+```
+pip install pyaudio
+```
+Windows:
+```
+pip install pipwin
+pipwin install pyaudio
+```
