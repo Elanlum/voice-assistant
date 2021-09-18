@@ -14,7 +14,7 @@ yandex.password = pass
 
 ### OpenWeather
 
-Register or sign into your account openweathermap.org and copy your ApiKey from your profile into properties file
+Register or sign in to your account openweathermap.org and copy your ApiKey from your profile into properties file
 
 ```
 [OpenWeather]
@@ -37,10 +37,10 @@ weather.apikey = apikey
 
 ### Developing notes:
 
-To launch project on Mac OS or Windows, you will need to install pyaudio.
+To launch project on macOS or Windows, you will need to install pyaudio.
 For instance, if you are using pip:
 
-Mac OS: 
+macOS: 
 ```
 pip install pyaudio
 ```
