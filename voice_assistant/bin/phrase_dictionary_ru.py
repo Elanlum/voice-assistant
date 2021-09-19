@@ -1,5 +1,5 @@
 from util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_PHRASE, SELECT_CITY, \
-    CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI
+    CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE
 
 
 # Dictionary consists of phrases with correspondent array of request and response:
@@ -18,5 +18,6 @@ def dictionary_ru():
         NO_PHRASE: ['Не понимаю Вас', 'Не понимаю Вас'],
         SELECT_CITY: ['Какой город интересует', 'Какой город интересует'],
         CITY_NOT_FOUND: ['Город не найден', 'Город не найден, попробуйте снова'],
-        CANCEL: ['отмена', 'Действие отменено']
+        CANCEL: ['отмена', 'Действие отменено'],
+        BROWSE: ['ищи в интернете', 'Ищу в интернете']
     }
