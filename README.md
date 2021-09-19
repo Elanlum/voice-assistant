@@ -49,3 +49,13 @@ Windows:
 pip install pipwin
 pipwin install pyaudio
 ```
+or
+```
+conda install pyaudio
+```
+
+googletrans lib 4.0.0 required
+
+```
+pip install googletrans==4.0.0-rc1
+```
