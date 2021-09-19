@@ -1,7 +1,8 @@
+import logging
+
 import pyttsx3
 import speech_recognition as sr
 from phrase_handler import handle_phrase
-from replier import reply
 from voice_recognizer import recognize_voice
 from config_service import read_app_config
 
@@ -29,7 +30,12 @@ def main():
         except sr.UnknownValueError:
             # TODO: Internationalize this
             print('Вас не слышно')
-            # reply('Вас не слышно', tts_engine)
+        except sr.RequestError:
+            pass
+        except sr.WaitTimeoutError:
+            # TODO: Internationalize this
+            print('Не могу разобрать ваше молчание')
+
 
 
 if __name__ == '__main__':
