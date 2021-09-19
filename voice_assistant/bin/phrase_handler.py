@@ -1,7 +1,7 @@
 from pyowm.commons.exceptions import NotFoundError
 from phrase_dictionary_ru import dictionary_ru
 from phrase_dictionary_en import dictionary_en
-from replier import reply, reply_weather, reply_music, reply_bye
+from replier import reply, reply_weather, reply_music, reply_bye, reply_web_search
 from voice_recognizer import recognize_voice
 from translator_service import translate_ru_en
 from config_service import read_app_config
@@ -24,6 +24,8 @@ def handle_phrase(user_text, tts_engine):
         reply_music(response, tts_engine)
     if phrase == const.WHAT_WEATHER:
         select_city_and_reply(tts_engine)
+    if phrase == const.BROWSE:
+        reply_web_search(response, get_request(phrase), request, tts_engine)
     else:
         reply(response, tts_engine)
 
@@ -41,7 +43,7 @@ def get_phrase_and_response_tuple(request):
     response = None
 
     for phrase in phrases.keys():
-        if get_request(phrase) == request:
+        if get_request(phrase) == request or get_request(phrase) in request:
             response = get_response(phrase)
             return phrase, response
 
