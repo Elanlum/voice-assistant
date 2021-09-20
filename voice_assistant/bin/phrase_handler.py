@@ -1,7 +1,7 @@
 from pyowm.commons.exceptions import NotFoundError
 from phrase_dictionary_ru import dictionary_ru
 from phrase_dictionary_en import dictionary_en
-from replier import reply, reply_weather, reply_music, reply_bye, reply_web_search
+from replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, reply_search_google
 from voice_recognizer import recognize_voice
 from translator_service import translate_ru_en
 from config_service import read_app_config
@@ -20,12 +20,16 @@ def handle_phrase(user_text, tts_engine):
 
     if phrase == const.BYE:
         reply_bye(response, tts_engine)
-    if phrase == const.PLAY_YANDEX or phrase == const.MUSIC_YANDEX or phrase == const.TURN_ON_YANDEX:
+    elif phrase == const.PLAY_YANDEX or phrase == const.MUSIC_YANDEX or phrase == const.TURN_ON_YANDEX:
         reply_music(response, tts_engine)
-    if phrase == const.WHAT_WEATHER:
+    elif phrase == const.WHAT_WEATHER:
         select_city_and_reply(tts_engine)
-    if phrase == const.BROWSE:
-        reply_web_search(response, get_request(phrase), request, tts_engine)
+    elif phrase == const.BROWSE:
+        url_part = extract_url_part(get_request(phrase), request)
+        reply_to_browse(response, url_part, tts_engine)
+    elif phrase == const.SEARCH:
+        url_part = extract_url_part(get_request(phrase), request)
+        reply_search_google(response, url_part, tts_engine)
     else:
         reply(response, tts_engine)
 
@@ -48,6 +52,7 @@ def get_phrase_and_response_tuple(request):
             return phrase, response
 
         response = get_response(const.NO_PHRASE)
+        phrase = ''
     return phrase, response
 
 
@@ -67,3 +72,11 @@ def select_city_and_reply(tts_engine):
             city_found = True
         except NotFoundError:
             reply(get_response(const.CITY_NOT_FOUND), tts_engine)
+
+
+def extract_url_part(key_phrase, inp):
+    url_part = ''
+    if key_phrase in inp:
+        url_part = inp.replace(key_phrase, '').strip()
+
+    return url_part

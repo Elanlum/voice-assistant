@@ -1,7 +1,7 @@
 from translator_service import translate_en_ru
 from weather_service import get_weather_status, get_avg_temperature
 from yandex_player import play_yandex_last_favourite_track
-from web_search.voice_web_search import web_search
+from web_search.voice_web_search import go_to_website, search_google
 
 
 def reply(text, tts_engine):
@@ -39,6 +39,11 @@ def reply_bye(reply_phrase, tts_engine):
     exit()
 
 
-def reply_web_search(reply_phrase, key_phrase, input_text, tts_engine):
+def reply_to_browse(reply_phrase, web_site, tts_engine):
     reply(reply_phrase, tts_engine)
-    web_search(key_phrase, input_text)
+    go_to_website(web_site)
+
+
+def reply_search_google(reply_phrase, search_request, tts_engine):
+    reply(reply_phrase, tts_engine)
+    search_google(search_request)
