@@ -28,6 +28,7 @@ weather.apikey = apikey
 * Show weather conditions based on second command with city name (! Done 08.20.21)
 * Extract all app settings to properties file(! Done 09.01.21)
 * Create internalization and at least two dictionaries for commands (! Done 09.09.21)
+* Added voice-controlled web browsing and Google search (! Done 09.20.21)
 * Windows and macOS support for selecting voice for tts
 * Create graph structure for replies handling
 * Create a way of stopping music without terminating app
