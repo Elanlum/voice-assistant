@@ -1,7 +1,10 @@
 import webbrowser
 
 
-def web_search(key_phrase, inp):
-    if key_phrase in inp:
-        inp = inp.replace(key_phrase, '').strip()
-        webbrowser.open('http://' + inp)
+def go_to_website(website):
+    # TODO: add validation on website name (non-cyrillic at least)
+    webbrowser.open('http://' + website)
+
+
+def search_google(search_request):
+    webbrowser.open('http://google.com/search?q=' + search_request)
