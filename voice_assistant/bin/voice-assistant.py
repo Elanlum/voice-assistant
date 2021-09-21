@@ -1,24 +1,14 @@
-import logging
-
 import pyttsx3
 import speech_recognition as sr
 from phrase_handler import handle_phrase
 from voice_recognizer import recognize_voice
-from config_service import read_app_config
-
-APPLE_RUSSIAN_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.milena.premium'
-APPLE_ENGLISH_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.samantha'
-# ENGLISH_FEMALE_VOICE = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
-
-
-app_config = read_app_config()
-language = app_config.get('Global', 'app.language')
+from initialize.initializer import app_initialize
 
 
 def config_tts():
     tts_engine = pyttsx3.init()
-    voice = APPLE_RUSSIAN_FEMALE_VOICE if language == 'ru' else APPLE_ENGLISH_FEMALE_VOICE
-    tts_engine.setProperty('voice', voice)
+    params = app_initialize()
+    tts_engine.setProperty('voice', params.voice)
     return tts_engine
 
 
