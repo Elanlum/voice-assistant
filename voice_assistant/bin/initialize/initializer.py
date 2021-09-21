@@ -17,7 +17,7 @@ def app_initialize():
     voice = None
     if os == 'Windows':
         voice = WIN_RUSSIAN_FEMALE_VOICE if language == 'ru' else WIN_ENGLISH_FEMALE_VOICE
-    if os == 'Darwin':
+    elif os == 'Darwin':
         voice = MACOS_RUSSIAN_FEMALE_VOICE if language == 'ru' else MACOS_ENGLISH_FEMALE_VOICE
 
     tts_engine = pyttsx3.init()
