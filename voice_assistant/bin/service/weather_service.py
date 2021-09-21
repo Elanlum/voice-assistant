@@ -1,7 +1,7 @@
 from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
-import location_info
-from config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
+from voice_assistant.bin.service import location_info_service
+from voice_assistant.bin.service.config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
 
 cred_config = read_credentials()
 app_config = read_app_config()
@@ -25,7 +25,7 @@ def get_weather_info(city):
 def get_weather_local_info():
     owm = config_owm()
     mgr = owm.weather_manager()
-    location = location_info.get_region_city()
+    location = location_info_service.get_region_city()
     return mgr.weather_at_place(location).weather
 
 

@@ -1,11 +1,12 @@
 from pyowm.commons.exceptions import NotFoundError
-from phrase_dictionary_ru import dictionary_ru
-from phrase_dictionary_en import dictionary_en
-from replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, reply_search_google
-from voice_recognizer import recognize_voice
-from translator_service import translate_ru_en
-from config_service import read_app_config
-import util.constants as const
+from voice_assistant.bin.dict.phrase_dictionary_ru import dictionary_ru
+from voice_assistant.bin.dict.phrase_dictionary_en import dictionary_en
+from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, \
+    reply_search_google
+from voice_assistant.bin.service.voice_recognize_service import recognize_voice
+from voice_assistant.bin.service.translator_service import translate_ru_en
+from voice_assistant.bin.service.config_service import read_app_config
+import voice_assistant.bin.util.constants as const
 
 app_config = read_app_config()
 language = app_config.get('Global', 'app.language')

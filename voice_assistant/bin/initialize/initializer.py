@@ -1,6 +1,6 @@
 import pyttsx3
 import platform
-from voice_assistant.bin.config_service import read_app_config
+from voice_assistant.bin.service.config_service import read_app_config
 
 MACOS_RUSSIAN_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.milena.premium'
 MACOS_ENGLISH_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.samantha'

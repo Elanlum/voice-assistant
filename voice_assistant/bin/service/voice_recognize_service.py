@@ -1,5 +1,5 @@
 import speech_recognition as sr
-from config_service import read_app_config
+from voice_assistant.bin.service.config_service import read_app_config
 
 app_config = read_app_config()
 phrase_time_limit = app_config.get('Global', 'phrase.time.limit')

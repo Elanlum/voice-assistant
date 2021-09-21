@@ -1,7 +1,7 @@
-from translator_service import translate_en_ru
-from weather_service import get_weather_status, get_avg_temperature
-from yandex_player import play_yandex_last_favourite_track
-from web_search.voice_web_search import go_to_website, search_google
+from voice_assistant.bin.service.translator_service import translate_en_ru
+from voice_assistant.bin.service.weather_service import get_weather_status, get_avg_temperature
+from voice_assistant.bin.service.yandex_player_service import play_yandex_last_favourite_track
+from voice_assistant.bin.service.voice_web_search_service import go_to_website, search_google
 
 
 def reply(text, tts_engine):
