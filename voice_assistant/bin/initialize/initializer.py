@@ -23,9 +23,11 @@ def app_initialize():
     tts_engine = pyttsx3.init()
     tts_engine.setProperty('voice', voice)
 
-    return tts_engine
+    return Parameters(os, tts_engine)
+
 
 # My first Class - pity to kill it
-# class Parameters:
-#     def __init__(self, voice):
-#         self.voice = voice
+class Parameters:
+    def __init__(self, os, tts_engine):
+        self.os = os
+        self.tts_engine = tts_engine
