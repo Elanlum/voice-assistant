@@ -1,3 +1,4 @@
+import pyttsx3
 import platform
 from voice_assistant.bin.config_service import read_app_config
 
@@ -19,9 +20,12 @@ def app_initialize():
     if os == 'Darwin':
         voice = MACOS_RUSSIAN_FEMALE_VOICE if language == 'ru' else MACOS_ENGLISH_FEMALE_VOICE
 
-    return Parameters(voice)
+    tts_engine = pyttsx3.init()
+    tts_engine.setProperty('voice', voice)
 
+    return tts_engine
 
-class Parameters:
-    def __init__(self, voice):
-        self.voice = voice
+# My first Class - pity to kill it
+# class Parameters:
+#     def __init__(self, voice):
+#         self.voice = voice
