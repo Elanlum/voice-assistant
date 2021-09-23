@@ -10,7 +10,7 @@ def main():
     while True:
         try:
             user_text = recognize_voice()
-            handle_phrase(user_text, params.tts_engine)
+            handle_phrase(user_text, params)
         except sr.UnknownValueError:
             # TODO: Internationalize this
             print('Вас не слышно')
@@ -19,6 +19,8 @@ def main():
         except sr.WaitTimeoutError:
             # TODO: Internationalize this
             print('Не могу разобрать ваше молчание')
+        except NotImplementedError as err:
+            print(str(err))
 
 
 if __name__ == '__main__':
