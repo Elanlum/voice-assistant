@@ -29,7 +29,8 @@ weather.apikey = apikey
 * Extract all app settings to properties file(! Done 09.01.21)
 * Create internalization and at least two dictionaries for commands (! Done 09.09.21)
 * Added voice-controlled web browsing and Google search (! Done 09.20.21)
-* Windows and macOS support for selecting voice for tts
+* Windows and macOS support for selecting voice for tts (! Done 09.23.21)
+* Added voice-controlled file opening (! Done 09.24.21)
 * Create graph structure for replies handling
 * Create a way of stopping music without terminating app
 * Show current time based on current location
