@@ -18,24 +18,66 @@ phrases = dict(phrases)
 def handle_phrase(user_text, params):
     request = user_text.lower()
     (phrase, response) = get_phrase_and_response_tuple(request)
+    voice_params = VoiceParams(request, response, phrase)
 
-    if phrase == const.BYE:
-        reply_bye(response, params)
-    elif phrase == const.PLAY_YANDEX or phrase == const.MUSIC_YANDEX or phrase == const.TURN_ON_YANDEX:
-        reply_music(response, params)
-    elif phrase == const.WHAT_WEATHER:
-        select_city_and_reply(params)
-    elif phrase == const.BROWSE:
-        url_part = extract_request_part(get_request(phrase), request)
-        reply_to_browse(response, url_part, params)
-    elif phrase == const.SEARCH:
-        url_part = extract_request_part(get_request(phrase), request)
-        reply_search_google(response, url_part, params)
-    elif phrase == const.OPEN_FILE:
-        file_name_type = extract_request_part(get_request(phrase), request)
-        reply_open_file(response, file_name_type, params)
-    else:
-        reply(response, params)
+    # if phrase == const.BYE:
+    #     reply_bye(response, params)
+    # elif phrase == const.PLAY_YANDEX or phrase == const.MUSIC_YANDEX or phrase == const.TURN_ON_YANDEX:
+    #     reply_music(response, params)
+    # elif phrase == const.WHAT_WEATHER:
+    #     select_city_and_reply(params)
+    # elif phrase == const.BROWSE:
+    #     url_part = extract_request_part(get_request(phrase), request)
+    #     reply_to_browse(response, url_part, params)
+    # elif phrase == const.SEARCH:
+    #     url_part = extract_request_part(get_request(phrase), request)
+    #     reply_search_google(response, url_part, params)
+    # elif phrase == const.OPEN_FILE:
+    #     file_name_type = extract_request_part(get_request(phrase), request)
+    #     reply_open_file(response, file_name_type, params)
+    # else:
+    #     reply(response, params)
+
+    phrase_handler = {
+        const.BYE: bye,
+        const.PLAY_YANDEX: play_yandex,
+        const.MUSIC_YANDEX: play_yandex,
+        const.TURN_ON_YANDEX: play_yandex,
+        const.WHAT_WEATHER: weather,
+        const.BROWSE: browse,
+        const.SEARCH: search,
+        const.OPEN_FILE: open_file
+    }
+
+    func = phrase_handler.get(phrase, lambda a, b: reply(voice_params.response, params))
+    func(voice_params, params)
+
+
+def bye(voice_params, params):
+    reply_bye(voice_params.response, params)
+
+
+def play_yandex(voice_params, params):
+    reply_music(voice_params.response, params)
+
+
+def weather(voice_params, params):
+    select_city_and_reply(params)
+
+
+def browse(voice_params, params):
+    url_part = extract_request_part(get_request(voice_params.phrase), voice_params.request)
+    reply_to_browse(voice_params.response, url_part, params)
+
+
+def search(voice_params, params):
+    url_part = extract_request_part(get_request(voice_params.phrase), voice_params.request)
+    reply_search_google(voice_params.response, url_part, params)
+
+
+def open_file(voice_params, params):
+    file_name_type = extract_request_part(get_request(voice_params.phrase), voice_params.request)
+    reply_open_file(voice_params.response, file_name_type, params)
 
 
 def get_request(phrase):
@@ -84,3 +126,10 @@ def extract_request_part(key_phrase, inp):
         url_part = inp.replace(key_phrase, '').strip()
 
     return url_part
+
+
+class VoiceParams:
+    def __init__(self, request, response, phrase):
+        self.request = request
+        self.response = response
+        self.phrase = phrase
