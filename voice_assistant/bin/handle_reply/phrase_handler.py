@@ -17,8 +17,7 @@ phrases = dict(phrases)
 
 def handle_phrase(user_text, params):
     request = user_text.lower()
-    (phrase, response) = get_phrase_and_response_tuple(request)
-    voice_params = VoiceParams(request, response, phrase)
+    voice_params = get_phrase_and_response_tuple(request)
 
     # if phrase == const.BYE:
     #     reply_bye(response, params)
@@ -49,7 +48,8 @@ def handle_phrase(user_text, params):
         const.OPEN_FILE: open_file
     }
 
-    func = phrase_handler.get(phrase, lambda a, b: reply(voice_params.response, params))
+    phrase = voice_params.phrase
+    func = phrase_handler.get(phrase, lambda x, y: base_case(voice_params, params))
     func(voice_params, params)
 
 
@@ -80,6 +80,10 @@ def open_file(voice_params, params):
     reply_open_file(voice_params.response, file_name_type, params)
 
 
+def base_case(voice_params, params):
+    reply(voice_params.response, params)
+
+
 def get_request(phrase):
     return phrases[phrase][0]
 
@@ -95,11 +99,11 @@ def get_phrase_and_response_tuple(request):
     for phrase in phrases.keys():
         if get_request(phrase) == request or get_request(phrase) in request:
             response = get_response(phrase)
-            return phrase, response
+            return VoiceParams(request, response, phrase)
 
         response = get_response(const.NO_PHRASE)
         phrase = ''
-    return phrase, response
+    return VoiceParams(request, response, phrase)
 
 
 def select_city_and_reply(tts_engine):
