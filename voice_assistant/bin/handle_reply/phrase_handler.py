@@ -1,23 +1,24 @@
 from pyowm.commons.exceptions import NotFoundError
-from voice_assistant.bin.dict.phrase_dictionary_ru import dictionary_ru
 from voice_assistant.bin.dict.phrase_dictionary_en import dictionary_en
+from voice_assistant.bin.dict.phrase_dictionary_ru import dictionary_ru
 from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, \
     reply_search_google, reply_open_file
 from voice_assistant.bin.service.voice_recognize_service import recognize_voice
 from voice_assistant.bin.service.translator_service import translate_ru_en
 from voice_assistant.bin.service.config_service import read_app_config
 import voice_assistant.bin.util.constants as const
+from voice_assistant.bin.service.dictionary_service import get_voice_params, get_request, get_response
 
-app_config = read_app_config()
-language = app_config.get('Global', 'app.language')
-
-phrases = dictionary_ru() if language == 'ru' else dictionary_en()
-phrases = dict(phrases)
+# app_config = read_app_config()
+# language = app_config.get('Global', 'app.language')
+#
+# phrases = dictionary_ru() if language == 'ru' else dictionary_en()
+# phrases = dict(phrases)
 
 
 def handle_phrase(user_text, params):
     request = user_text.lower()
-    voice_params = get_phrase_and_response_tuple(request)
+    voice_params = get_voice_params(request)
 
     # if phrase == const.BYE:
     #     reply_bye(response, params)
@@ -84,28 +85,6 @@ def base_case(voice_params, params):
     reply(voice_params.response, params)
 
 
-def get_request(phrase):
-    return phrases[phrase][0]
-
-
-def get_response(phrase):
-    return phrases[phrase][1]
-
-
-def get_phrase_and_response_tuple(request):
-    phrase = None
-    response = None
-
-    for phrase in phrases.keys():
-        if get_request(phrase) == request or get_request(phrase) in request:
-            response = get_response(phrase)
-            return VoiceParams(request, response, phrase)
-
-        response = get_response(const.NO_PHRASE)
-        phrase = ''
-    return VoiceParams(request, response, phrase)
-
-
 def select_city_and_reply(tts_engine):
     reply(get_request(const.SELECT_CITY), tts_engine)
 
@@ -130,10 +109,3 @@ def extract_request_part(key_phrase, inp):
         url_part = inp.replace(key_phrase, '').strip()
 
     return url_part
-
-
-class VoiceParams:
-    def __init__(self, request, response, phrase):
-        self.request = request
-        self.response = response
-        self.phrase = phrase
