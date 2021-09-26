@@ -58,22 +58,22 @@ def base_case(voice_params, params):
     reply(voice_params.response, params)
 
 
-def select_city_and_reply(tts_engine):
-    reply(get_request(const.SELECT_CITY), tts_engine)
+def select_city_and_reply(params):
+    reply(get_request(const.SELECT_CITY), params)
 
     city_found = False
     while not city_found:
         try:
-            user_text = recognize_voice()
-            if user_text == get_request(const.CANCEL):
-                reply(get_response(const.CANCEL), tts_engine)
+            user_command = recognize_voice()
+            if user_command == get_request(const.CANCEL):
+                reply(get_response(const.CANCEL), params)
                 return
 
-            user_text_en = translate_ru_en(user_text)
-            reply_weather(user_text_en, tts_engine)
+            user_command_en = translate_ru_en(user_command)
+            reply_weather(user_command_en, params)
             city_found = True
         except NotFoundError:
-            reply(get_response(const.CITY_NOT_FOUND), tts_engine)
+            reply(get_response(const.CITY_NOT_FOUND), params)
 
 
 def extract_request_part(key_phrase, inp):
