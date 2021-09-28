@@ -15,7 +15,8 @@ phrases = dict(phrases)
 def get_voice_params(request):
 
     for phrase in phrases.keys():
-        if get_request(phrase) == request or get_request(phrase) in request:
+        # To accept substrings as commands
+        if get_request(phrase) in request:
             response = get_response(phrase)
             return VoiceParams(request, response, phrase)
 

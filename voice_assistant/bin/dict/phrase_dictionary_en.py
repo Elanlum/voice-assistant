@@ -1,5 +1,5 @@
 from voice_assistant.bin.util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_PHRASE, \
-    SELECT_CITY, CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE
+    SELECT_CITY, CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE, WHAT_CAN_YOU
 
 
 # Dictionary consists of phrases with correspondent array of request and response:
@@ -21,5 +21,7 @@ def dictionary_en():
         CANCEL: ['Cancel', 'Action cancelled'],
         BROWSE: ['browse', 'Browsing'],
         SEARCH: ['search', 'Searching in Google'],
-        OPEN_FILE: ['open', 'Opening']
+        OPEN_FILE: ['open', 'Opening'],
+        WHAT_CAN_YOU: ['what can you do', 'I can do the small talk, turn on music, give a weather forecast, browse in '
+                                          'web and more']
     }
