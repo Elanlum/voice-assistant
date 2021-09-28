@@ -5,6 +5,8 @@ from voice_assistant.bin.service.voice_recognize_service import recognize_voice
 from voice_assistant.bin.service.translator_service import translate_ru_en
 import voice_assistant.bin.util.constants as const
 from voice_assistant.bin.service.dictionary_service import get_voice_params, get_request, get_response
+import re
+import voice_assistant.bin.service.dictionary_service as dict
 
 
 def handle_phrase(user_text, params):
@@ -41,7 +43,11 @@ def weather(voice_params, params):
 
 def browse(voice_params, params):
     url_part = extract_request_part(get_request(voice_params.phrase), voice_params.request)
-    reply_to_browse(voice_params.response, url_part, params)
+    if re.search('[\u0400-\u04FF]', url_part) or re.match(r'^[A-Za-z]{1,9}\.[A-Za-z]{1,9}', url_part) is None:
+        response = dict.get_response(const.WRONG_WEBSITE)
+        reply(response, params)
+    else:
+        reply_to_browse(voice_params.response, url_part, params)
 
 
 def search(voice_params, params):

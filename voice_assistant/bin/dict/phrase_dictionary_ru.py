@@ -1,5 +1,6 @@
 from voice_assistant.bin.util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_PHRASE, \
-    SELECT_CITY, CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE, WHAT_CAN_YOU
+    SELECT_CITY, CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE, \
+    WHAT_CAN_YOU, WRONG_WEBSITE
 
 
 # Dictionary consists of phrases with correspondent array of request and response:
@@ -24,4 +25,5 @@ def dictionary_ru():
         OPEN_FILE: ['open', 'Opening'],
         WHAT_CAN_YOU: ['что ты умеешь', 'я могу немного поболтать, включить музыку, подсказать погоду, открыть сайт и '
                                         'кое-что другое'],
+        WRONG_WEBSITE: ['вы неверно назвали сайт', 'вы неверно назвали сайт']
     }

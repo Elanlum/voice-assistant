@@ -5,6 +5,7 @@ import voice_assistant.bin.util.constants as const
 
 # Selects dictionary based on language setting, extracts requests and responses from it
 
+# TODO: avoid second read from config, use initializer object
 app_config = read_app_config()
 language = app_config.get('Global', 'app.language')
 

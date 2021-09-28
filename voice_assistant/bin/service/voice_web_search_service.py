@@ -2,7 +2,6 @@ import webbrowser
 
 
 def go_to_website(website):
-    # TODO: add validation on website name (non-cyrillic at least)
     webbrowser.open('http://' + website)
 
 
