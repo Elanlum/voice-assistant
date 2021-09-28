@@ -7,12 +7,11 @@ language = app_config.get('Global', 'app.language')
 
 
 def recognize_voice():
-    # TODO: Internationalize this
-    print('Говорите, пожалуйста >>>')
-
     voice_recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         voice_recognizer.adjust_for_ambient_noise(source)
+        # TODO: Internationalize this
+        print('Говорите, пожалуйста >>>')
         audio = voice_recognizer.listen(source, None, int(phrase_time_limit))
 
     voice_text = voice_recognizer.recognize_google(audio, language=language)
