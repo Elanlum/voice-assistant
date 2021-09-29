@@ -43,7 +43,7 @@ def weather(voice_params, params):
 
 def browse(voice_params, params):
     url_part = extract_request_part(get_request(voice_params.phrase), voice_params.request)
-    if re.search('[\u0400-\u04FF]', url_part) or re.match(r'^[A-Za-z]{1,9}\.[A-Za-z]{1,9}', url_part) is None:
+    if re.search(const.CYRILLIC_PATTERN, url_part) or re.match(const.WEBSITE_PATTERN, url_part) is None:
         response = dict.get_response(const.WRONG_WEBSITE)
         reply(response, params)
     else:
