@@ -1,6 +1,6 @@
 from voice_assistant.bin.util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_PHRASE, \
     SELECT_CITY, CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE, \
-    WHAT_CAN_YOU, WRONG_WEBSITE
+    WHAT_CAN_YOU, WRONG_WEBSITE, WHO_ARE_YOU, WHATS_YOUR_NAME
 
 
 # Dictionary consists of phrases with correspondent array of request and response:
@@ -25,5 +25,7 @@ def dictionary_en():
         OPEN_FILE: ['open', 'Opening'],
         WHAT_CAN_YOU: ['what can you do', 'I can do the small talk, turn on music, give a weather forecast, browse in '
                                           'web and more'],
-        WRONG_WEBSITE: ['wrong website name', 'wrong website name']
+        WRONG_WEBSITE: ['wrong website name', 'wrong website name'],
+        WHO_ARE_YOU: ['Who are you', 'I am Suzy, your voice assistant'],
+        WHATS_YOUR_NAME: ['What is your name', 'My name is Suzy, I am your voice assistant']
     }
