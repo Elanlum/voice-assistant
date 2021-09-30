@@ -26,6 +26,6 @@ def dictionary_en():
         WHAT_CAN_YOU: ['what can you do', 'I can do the small talk, turn on music, give a weather forecast, browse in '
                                           'web and more'],
         WRONG_WEBSITE: ['wrong website name', 'wrong website name'],
-        WHO_ARE_YOU: ['Who are you', 'I am Suzy, your voice assistant'],
-        WHATS_YOUR_NAME: ['What is your name', 'My name is Suzy, I am your voice assistant']
+        WHO_ARE_YOU: ['who are you', 'I am Suzy, your voice assistant'],
+        WHATS_YOUR_NAME: ['what is your name', 'My name is Suzy, I am your voice assistant']
     }
