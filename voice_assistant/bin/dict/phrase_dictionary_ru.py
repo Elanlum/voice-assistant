@@ -1,6 +1,6 @@
 from voice_assistant.bin.util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_PHRASE, \
     SELECT_CITY, CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE, \
-    WHAT_CAN_YOU, WRONG_WEBSITE, WHO_ARE_YOU, WHATS_YOUR_NAME
+    WHAT_CAN_YOU, WRONG_WEBSITE, WHO_ARE_YOU, WHATS_YOUR_NAME, WHAT_TIME
 
 
 # Dictionary consists of phrases with correspondent array of request and response:
@@ -28,5 +28,5 @@ def dictionary_ru():
         WRONG_WEBSITE: ['вы неверно назвали сайт', 'вы неверно назвали сайт'],
         WHO_ARE_YOU: ['кто ты', 'Я Сюзи, ваш голосовой ассистент'],
         WHATS_YOUR_NAME: ['как тебя зовут', 'Меня зовут Сюзи, я ваш голосовой ассистент'],
-
+        WHAT_TIME: ['который час', 'Текущее время']
     }
