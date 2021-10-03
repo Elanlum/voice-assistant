@@ -9,7 +9,7 @@ import re
 import voice_assistant.bin.service.dictionary_service as dict
 
 
-def handle_phrase(user_text, params):
+def handle_phrase(user_text):
     request = user_text.lower()
     voice_params = get_voice_params(request)
 
@@ -25,61 +25,61 @@ def handle_phrase(user_text, params):
     }
 
     phrase = voice_params.phrase
-    func = phrase_handler.get(phrase, lambda x, y: base_case(voice_params, params))
-    func(voice_params, params)
+    func = phrase_handler.get(phrase, lambda x: base_case(voice_params))
+    func(voice_params)
 
 
-def bye(voice_params, params):
-    reply_bye(voice_params.response, params)
+def bye(voice_params):
+    reply_bye(voice_params.response)
 
 
-def play_yandex(voice_params, params):
-    reply_music(voice_params.response, params)
+def play_yandex(voice_params):
+    reply_music(voice_params.response)
 
 
-def weather(voice_params, params):
-    select_city_and_reply(params)
+def weather(voice_params):
+    select_city_and_reply()
 
 
-def browse(voice_params, params):
+def browse(voice_params):
     url_part = extract_request_part(get_request(voice_params.phrase), voice_params.request)
     if re.search(const.CYRILLIC_PATTERN, url_part) or re.match(const.WEBSITE_PATTERN, url_part) is None:
         response = dict.get_response(const.WRONG_WEBSITE)
-        reply(response, params)
+        reply(response)
     else:
-        reply_to_browse(voice_params.response, url_part, params)
+        reply_to_browse(voice_params.response, url_part)
 
 
-def search(voice_params, params):
+def search(voice_params):
     url_part = extract_request_part(get_request(voice_params.phrase), voice_params.request)
-    reply_search_google(voice_params.response, url_part, params)
+    reply_search_google(voice_params.response, url_part)
 
 
-def open_file(voice_params, params):
+def open_file(voice_params):
     file_name_type = extract_request_part(get_request(voice_params.phrase), voice_params.request)
-    reply_open_file(voice_params.response, file_name_type, params)
+    reply_open_file(voice_params.response, file_name_type)
 
 
-def base_case(voice_params, params):
-    reply(voice_params.response, params)
+def base_case(voice_params):
+    reply(voice_params.response)
 
 
-def select_city_and_reply(params):
-    reply(get_request(const.SELECT_CITY), params)
+def select_city_and_reply():
+    reply(get_request(const.SELECT_CITY))
 
     city_found = False
     while not city_found:
         try:
             user_command = recognize_voice()
             if user_command == get_request(const.CANCEL):
-                reply(get_response(const.CANCEL), params)
+                reply(get_response(const.CANCEL))
                 return
 
             user_command_en = translate_ru_en(user_command)
-            reply_weather(user_command_en, params)
+            reply_weather(user_command_en)
             city_found = True
         except NotFoundError:
-            reply(get_response(const.CITY_NOT_FOUND), params)
+            reply(get_response(const.CITY_NOT_FOUND))
 
 
 def extract_request_part(key_phrase, inp):

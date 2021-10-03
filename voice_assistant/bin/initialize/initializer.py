@@ -29,8 +29,6 @@ def app_initialize():
     params = Parameters(os, tts_engine, language)
     cache[SYSTEM_PARAMS_PROP_NAME] = params
 
-    return params
-
 
 # My first Class - pity to kill it
 class Parameters:

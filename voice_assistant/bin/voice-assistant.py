@@ -5,12 +5,12 @@ from initialize.initializer import app_initialize
 
 
 def main():
-    params = app_initialize()
+    app_initialize()
 
     while True:
         try:
             user_text = recognize_voice()
-            handle_phrase(user_text, params)
+            handle_phrase(user_text)
         except sr.UnknownValueError:
             # TODO: Internationalize this
             print('Вас не слышно')
