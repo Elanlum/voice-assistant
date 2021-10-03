@@ -1,7 +1,9 @@
 import speech_recognition as sr
-from voice_assistant.bin.handle_reply.phrase_handler import handle_phrase
-from voice_assistant.bin.service.voice_recognize_service import recognize_voice
+from handle_reply.phrase_handler import handle_phrase
+from service.voice_recognize_service import recognize_voice
 from initialize.initializer import app_initialize
+from dict.text_commands_dictionary import DONT_HEAR
+from service.text_commands_resolver import print_command
 
 
 def main():
@@ -12,8 +14,7 @@ def main():
             user_text = recognize_voice()
             handle_phrase(user_text)
         except sr.UnknownValueError:
-            # TODO: Internationalize this
-            print('Вас не слышно')
+            print_command(DONT_HEAR)
         except sr.RequestError:
             pass
         except sr.WaitTimeoutError:

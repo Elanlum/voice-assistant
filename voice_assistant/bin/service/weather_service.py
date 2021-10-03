@@ -11,6 +11,7 @@ def config_owm():
     if cred_config.has_option(WEATHER_BLOCK, WEATHER_APIKEY):
         api_key = cred_config.get(WEATHER_BLOCK, WEATHER_APIKEY)
 
+    # TODO: get language from cache here
     owm_config = get_default_config()
     owm_config['language'] = app_config.get('Global', 'app.language')
     return OWM(api_key, owm_config)

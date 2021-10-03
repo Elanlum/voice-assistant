@@ -8,6 +8,7 @@ from voice_assistant.bin.service.config_service import read_credentials, YANDEX_
 config = read_credentials()
 
 
+# TODO: store token in cache here
 def yandex_authorize():
     if config.has_option(YANDEX_BLOCK, YANDEX_TOKEN):
         token = config.get(YANDEX_BLOCK, YANDEX_TOKEN)

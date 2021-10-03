@@ -13,3 +13,15 @@ def print_command(command_name):
         print(text_commands()[command_name][1])
     else:
         print('Something\'s wrong')
+
+# TODO: Fix this duplicate (use kwargs)
+def print_command_with_arg(command_name, text):
+    params = cache[SYSTEM_PARAMS_PROP_NAME]
+    language = params.get_language()
+
+    if language == 'ru':
+        print(text_commands()[command_name][0], text)
+    elif language == 'en':
+        print(text_commands()[command_name][1], text)
+    else:
+        print('Something\'s wrong')

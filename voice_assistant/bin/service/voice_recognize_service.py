@@ -1,7 +1,7 @@
 import speech_recognition as sr
 from voice_assistant.bin.service.config_service import read_app_config
-from voice_assistant.bin.service.text_commands_resolver import print_command
-from voice_assistant.bin.dict.text_commands_dictionary import SPEAK
+from voice_assistant.bin.service.text_commands_resolver import print_command, print_command_with_arg
+from voice_assistant.bin.dict.text_commands_dictionary import SPEAK, YOU_SAID
 
 app_config = read_app_config()
 phrase_time_limit = app_config.get('Global', 'phrase.time.limit')
@@ -17,7 +17,6 @@ def recognize_voice():
 
     voice_text = voice_recognizer.recognize_google(audio, language=language)
 
-    # TODO: Internationalize this
-    print('Вы сказали:', voice_text)
+    print_command_with_arg(YOU_SAID, voice_text)
 
     return voice_text
