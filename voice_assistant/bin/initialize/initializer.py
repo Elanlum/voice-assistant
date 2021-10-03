@@ -25,9 +25,7 @@ def app_initialize():
     tts_engine = pyttsx3.init()
     tts_engine.setProperty('voice', voice)
 
-    # TODO: probably rework this
-    params = Parameters(os, tts_engine, language)
-    cache[SYSTEM_PARAMS_PROP_NAME] = params
+    cache[SYSTEM_PARAMS_PROP_NAME] = Parameters(os, tts_engine, language)
 
 
 # My first Class - pity to kill it
@@ -43,3 +41,6 @@ class Parameters:
 
     def get_dictionary(self):
         return self.dictionary
+
+    def get_language(self):
+        return self.language
