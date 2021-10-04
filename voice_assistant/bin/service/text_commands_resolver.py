@@ -14,6 +14,7 @@ def print_command(command_name):
     else:
         print('Something\'s wrong')
 
+
 # TODO: Fix this duplicate (use kwargs)
 def print_command_with_arg(command_name, text):
     params = cache[SYSTEM_PARAMS_PROP_NAME]

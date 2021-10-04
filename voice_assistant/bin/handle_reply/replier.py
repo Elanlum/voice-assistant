@@ -5,13 +5,14 @@ from voice_assistant.bin.service.voice_web_search_service import go_to_website, 
 from voice_assistant.bin.service.file_service import open_file
 from voice_assistant.bin.initialize.cache import cache
 import voice_assistant.bin.util.constants as const
+from voice_assistant.bin.service.text_commands_resolver import print_command_with_arg
+from voice_assistant.bin.dict.text_commands_dictionary import ASSISTANT
 
 
 def reply(text):
     params = get_params_from_cache()
     tts_engine = params.tts_engine
-    # TODO: Internationalize this
-    print('Ассистент:', text)
+    print_command_with_arg(ASSISTANT, text)
 
     tts_engine.say(str(text))
     tts_engine.runAndWait()
