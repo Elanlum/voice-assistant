@@ -2,18 +2,21 @@ from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
 from voice_assistant.bin.service import location_info_service
 from voice_assistant.bin.service.config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
+from voice_assistant.bin.initialize.cache import get_params_from_cache
 
 cred_config = read_credentials()
 app_config = read_app_config()
 
 
+# TODO: rework usage of configs here, they should be in cache already (see if reading on fly works)
 def config_owm():
     if cred_config.has_option(WEATHER_BLOCK, WEATHER_APIKEY):
         api_key = cred_config.get(WEATHER_BLOCK, WEATHER_APIKEY)
 
-    # TODO: get language from cache here
     owm_config = get_default_config()
-    owm_config['language'] = app_config.get('Global', 'app.language')
+    params = get_params_from_cache()
+    params.get_language()
+    owm_config['language'] = params.get_language()
     return OWM(api_key, owm_config)
 
 
