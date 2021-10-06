@@ -3,9 +3,10 @@ from voice_assistant.bin.service.weather_service import get_weather_status, get_
 from voice_assistant.bin.service.yandex_player_service import play_yandex_last_favourite_track
 from voice_assistant.bin.service.voice_web_search_service import go_to_website, search_google
 from voice_assistant.bin.service.file_service import open_file
-from voice_assistant.bin.initialize.cache import get_params_from_cache
+from voice_assistant.bin.initialize.cache import cache, get_params_from_cache, get_language_from_cache
 from voice_assistant.bin.service.text_commands_resolver import print_command
-from voice_assistant.bin.dict.text_commands_dictionary import ASSISTANT
+from voice_assistant.bin.dict.text_commands_dictionary import ASSISTANT, WEATHER_REPLY, get_en_response, get_ru_response
+from voice_assistant.bin.util.constants import CITY_LOCAL_NAME, TEMPERATURE, STATUS
 
 
 def reply(text):
@@ -17,20 +18,17 @@ def reply(text):
     tts_engine.runAndWait()
 
 
-# TODO: make this ready for I18n
+# TODO: fix translating city and conditions
 def reply_weather(city):
     city_local_name = translate_en_ru(city)
-    temperature = get_avg_temperature(city)
+    temperature = get_avg_temperature(city_local_name)
     status = get_weather_status(city)
+    cache[CITY_LOCAL_NAME] = city
+    cache[TEMPERATURE] = temperature
+    cache[STATUS] = status
 
-    reply_list = ['В городе ',
-                  city_local_name,
-                  ' температура сегодня ',
-                  str(temperature),
-                  ' градусов, ',
-                  status]
-
-    reply(''.join(reply_list))
+    language = get_language_from_cache()
+    reply(get_ru_response(WEATHER_REPLY)) if language == 'ru' else reply(get_en_response(WEATHER_REPLY))
 
 
 def reply_music(reply_phrase):

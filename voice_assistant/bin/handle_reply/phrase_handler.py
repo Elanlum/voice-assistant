@@ -74,7 +74,7 @@ def select_city_and_reply():
             if user_command == get_request(const.CANCEL):
                 reply(get_response(const.CANCEL))
                 return
-
+# TODO: unify translating, make it in the end
             user_command_en = translate_ru_en(user_command)
             reply_weather(user_command_en)
             city_found = True
