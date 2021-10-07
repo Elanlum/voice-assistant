@@ -37,6 +37,7 @@ weather.apikey = apikey
 * Show current time based on current location
 * Better location definition, not based on ip request
 * Packaging of the application to something (probably app)
+* Add console input for login, password, token input for services and store them in cache
 
 ### Developing notes:
 
