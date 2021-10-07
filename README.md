@@ -31,10 +31,10 @@ weather.apikey = apikey
 * Added voice-controlled web browsing and Google search (! Done 09.20.21)
 * Windows and macOS support for selecting voice for tts (! Done 09.23.21)
 * Added voice-controlled file opening (! Done 09.24.21)
+* Add support of phrases based on selected language and resource bundles (! Done 10.07.21)
 * Create graph structure for replies handling
 * Create a way of stopping music without terminating app
 * Show current time based on current location
-* Add support of phrases based on selected language and resource bundles
 * Better location definition, not based on ip request
 * Packaging of the application to something (probably app)
 
