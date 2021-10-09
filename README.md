@@ -32,12 +32,13 @@ weather.apikey = apikey
 * Windows and macOS support for selecting voice for tts (! Done 09.23.21)
 * Added voice-controlled file opening (! Done 09.24.21)
 * Add support of phrases based on selected language and resource bundles (! Done 10.07.21)
-* Create graph structure for replies handling
-* Create a way of stopping music without terminating app
+* Improve cache storage for tokens (Yandex, OpenWeather)
 * Show current time based on current location
+* Add console input for login, password, token input for services and store them in cache
+* Create a way of stopping music without terminating app
 * Better location definition, not based on ip request
 * Packaging of the application to something (probably app)
-* Add console input for login, password, token input for services and store them in cache
+* Create graph structure for replies handling
 
 ### Developing notes:
 
