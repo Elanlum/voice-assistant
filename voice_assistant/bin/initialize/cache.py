@@ -1,4 +1,4 @@
-from voice_assistant.bin.util.constants import SYSTEM_PARAMS_PROP_NAME
+from voice_assistant.bin.util.constants import SYSTEM_PARAMS_PROP_NAME, WEATHER
 
 cache = {}
 
@@ -10,6 +10,10 @@ def get_params_from_cache():
 def get_language_from_cache():
     params = cache[SYSTEM_PARAMS_PROP_NAME]
     return params.get_language()
+
+
+def get_weather_from_cache():
+    return cache[WEATHER]
 
 
 def is_language_ru():

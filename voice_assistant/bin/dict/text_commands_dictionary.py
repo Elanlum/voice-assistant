@@ -1,5 +1,6 @@
-from voice_assistant.bin.initialize.cache import cache
-from voice_assistant.bin.util.constants import TEMPERATURE, CITY_LOCAL_NAME, STATUS
+from voice_assistant.bin.initialize.cache import cache, get_weather_from_cache
+from voice_assistant.bin.util.constants import WEATHER
+from voice_assistant.bin.service.weather_service import Weather
 
 SPEAK = 'speak'
 DONT_HEAR = 'cant hear you'
@@ -8,9 +9,7 @@ ASSISTANT = 'assistant'
 YOU_SILENT = 'you\'re silent'
 WEATHER_REPLY = 'weather'
 
-cache[STATUS] = ''
-cache[CITY_LOCAL_NAME] = ''
-cache[TEMPERATURE] = ''
+cache[WEATHER] = Weather()
 
 
 # TODO: technically it's not text commands dictionary anymore. Need fix/rename
@@ -21,8 +20,12 @@ def text_commands():
         YOU_SAID: ['Вы сказали:', 'You have said:'],
         ASSISTANT: ['Ассистент:', 'Assistant:'],
         YOU_SILENT: ['Кажется, вы молчите', 'Seems like you too silent'],
-        WEATHER_REPLY: [f'В городе {cache[CITY_LOCAL_NAME]} температура сегодня {cache[TEMPERATURE]} градусов, {cache[STATUS]}',
-                        f'The weather in {cache[CITY_LOCAL_NAME]} city today is {cache[TEMPERATURE]} degrees, {cache[STATUS]}']
+        WEATHER_REPLY: [f'В городе {get_weather_from_cache().target_city} '
+                        f'температура сегодня {get_weather_from_cache().temperature} градусов, '
+                        f'{get_weather_from_cache().status}',
+                        f'The weather in {get_weather_from_cache().target_city} '
+                        f'city today is {get_weather_from_cache().temperature} degrees, '
+                        f'{get_weather_from_cache().status}']
     }
 
 
