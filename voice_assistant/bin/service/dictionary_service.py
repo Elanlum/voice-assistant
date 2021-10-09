@@ -1,7 +1,6 @@
-from voice_assistant.bin.service.config_service import read_app_config
 from voice_assistant.bin.dict.phrase_dictionary_en import dictionary_en
 from voice_assistant.bin.dict.phrase_dictionary_ru import dictionary_ru
-import voice_assistant.bin.util.constants as const
+from voice_assistant.bin.util import constants as const
 from voice_assistant.bin.initialize.cache import cache
 
 # Selects dictionary based on language setting, extracts requests and responses from it

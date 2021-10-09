@@ -1,5 +1,6 @@
 from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
+
 from voice_assistant.bin.service import location_info_service
 from voice_assistant.bin.service.config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
 from voice_assistant.bin.initialize.cache import get_params_from_cache

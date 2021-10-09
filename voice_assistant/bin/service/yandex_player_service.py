@@ -2,6 +2,7 @@ import os
 import sys
 from yandex_music import Client
 from playsound import playsound
+
 from voice_assistant.bin.service.config_service import read_credentials, YANDEX_BLOCK, YANDEX_TOKEN, YANDEX_LOGIN, \
     YANDEX_PWD, TRACK_NAME, CRED_PROPERTIES
 

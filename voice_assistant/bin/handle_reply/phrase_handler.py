@@ -1,13 +1,15 @@
 from pyowm.commons.exceptions import NotFoundError
-from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, \
-    reply_search_google, reply_open_file
+import re
+
 from voice_assistant.bin.service.voice_recognize_service import recognize_voice
 from voice_assistant.bin.service.translator_service import translate_ru_en
-import voice_assistant.bin.util.constants as const
+from voice_assistant.bin.util import constants as const
 from voice_assistant.bin.service.dictionary_service import get_voice_params, get_request, get_response
-import re
-import voice_assistant.bin.service.dictionary_service as dict
+from voice_assistant.bin.service import dictionary_service as dict
 from voice_assistant.bin.initialize.cache import is_language_ru
+from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, \
+    reply_search_google, reply_open_file
+
 
 
 def handle_phrase(user_text):

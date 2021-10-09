@@ -1,5 +1,6 @@
 import pyttsx3
 import platform
+
 from voice_assistant.bin.service.config_service import read_app_config
 from voice_assistant.bin.initialize.cache import cache
 from voice_assistant.bin.util.constants import SYSTEM_PARAMS_PROP_NAME
