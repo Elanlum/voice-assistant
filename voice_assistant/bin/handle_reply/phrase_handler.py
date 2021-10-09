@@ -7,6 +7,7 @@ import voice_assistant.bin.util.constants as const
 from voice_assistant.bin.service.dictionary_service import get_voice_params, get_request, get_response
 import re
 import voice_assistant.bin.service.dictionary_service as dict
+from voice_assistant.bin.initialize.cache import is_language_ru
 
 
 def handle_phrase(user_text):
@@ -74,9 +75,9 @@ def select_city_and_reply():
             if user_command == get_request(const.CANCEL):
                 reply(get_response(const.CANCEL))
                 return
-# TODO: unify translating, make it in the end
-            user_command_en = translate_ru_en(user_command)
-            reply_weather(user_command_en)
+
+            user_command = translate_ru_en(user_command) if is_language_ru() else user_command
+            reply_weather(user_command)
             city_found = True
         except NotFoundError:
             reply(get_response(const.CITY_NOT_FOUND))
