@@ -38,7 +38,8 @@ weather.apikey = apikey
 * Create a way of stopping music without terminating app
 * Better location definition, not based on ip request
 * Packaging of the application to something (probably app)
-* Create graph structure for replies handling
+* Dockerfile for deploy of project to some cloud
+* Create graph structure for replies handling (more flexible dialogue)
 
 ### Developing notes:
 
