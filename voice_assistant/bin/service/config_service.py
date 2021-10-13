@@ -20,3 +20,8 @@ def read_credentials():
 def read_app_config():
     configurer.read(CONFIG_PROPERTIES)
     return configurer
+
+
+def write_credentials(config):
+    with open(CRED_PROPERTIES, 'w') as cred_file:
+        config.write(cred_file)

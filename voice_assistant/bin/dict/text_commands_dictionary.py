@@ -7,6 +7,8 @@ YOU_SAID = 'you\'ve said'
 ASSISTANT = 'assistant'
 YOU_SILENT = 'you\'re silent'
 WEATHER_REPLY = 'weather'
+INSERT_YA_LOGIN = 'insert Yandex login'
+INSERT_YA_PWD = 'insert Yandex password'
 
 cache[WEATHER_CACHE] = Weather()
 
@@ -24,7 +26,9 @@ def text_commands():
                         f'{get_weather_from_cache().status}',
                         f'The weather in {get_weather_from_cache().target_city} '
                         f'city today is {get_weather_from_cache().temperature} degrees, '
-                        f'{get_weather_from_cache().status}']
+                        f'{get_weather_from_cache().status}'],
+        INSERT_YA_LOGIN: ['Введите логин Yandex: ', 'Type Yandex login: '],
+        INSERT_YA_PWD: ['Введите пароль Yandex: ', 'Type Yandex password: '],
     }
 
 
