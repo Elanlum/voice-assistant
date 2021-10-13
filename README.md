@@ -4,7 +4,7 @@
 
 ### Yandex.Music
 
-For early development purpose you have to create `cred.properties` file and store
+For early development purpose you have to create `cred.properties` file in root and store
 
 ```
 [Yandex]
