@@ -40,6 +40,7 @@ weather.apikey = apikey
 * Packaging of the application to something (probably app)
 * Dockerfile for deploy of project to some cloud
 * Create graph structure for replies handling (more flexible dialogue)
+* Write tests, check coverage
 
 ### Developing notes:
 
