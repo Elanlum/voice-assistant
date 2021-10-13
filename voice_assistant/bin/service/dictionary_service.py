@@ -1,7 +1,7 @@
 from voice_assistant.bin.dict.phrase_dictionary_en import dictionary_en
 from voice_assistant.bin.dict.phrase_dictionary_ru import dictionary_ru
 from voice_assistant.bin.util import constants as const
-from voice_assistant.bin.initialize.cache import cache
+from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
 
 # Selects dictionary based on language setting, extracts requests and responses from it
 
@@ -29,13 +29,13 @@ def get_response(phrase):
 
 
 def get_dictionary_from_cache():
-    params = cache[const.SYSTEM_PARAMS_PROP_NAME]
+    params = cache[SYSTEM_PARAMS_PROP_CACHE]
     phrases = params.get_dictionary()
     return dict(phrases)
 
 
 def put_dictionary_to_cache():
-    params = cache[const.SYSTEM_PARAMS_PROP_NAME]
+    params = cache[SYSTEM_PARAMS_PROP_CACHE]
     phrases = dictionary_ru() if params.language == 'ru' else dictionary_en()
     phrases = dict(phrases)
     params.set_dictionary(phrases)

@@ -1,10 +1,10 @@
 from voice_assistant.bin.dict.text_commands_dictionary import text_commands
-from voice_assistant.bin.initialize.cache import cache
-from voice_assistant.bin.util.constants import SYSTEM_PARAMS_PROP_NAME, TEXT_KEY
+from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
+from voice_assistant.bin.util.constants import TEXT_KEY
 
 
 def print_command(command_name, **kwargs):
-    params = cache[SYSTEM_PARAMS_PROP_NAME]
+    params = cache[SYSTEM_PARAMS_PROP_CACHE]
     language = params.get_language()
 
     value = kwargs.get(TEXT_KEY) or ''

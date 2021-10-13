@@ -2,8 +2,7 @@ import pyttsx3
 import platform
 
 from voice_assistant.bin.service.config_service import read_app_config
-from voice_assistant.bin.initialize.cache import cache
-from voice_assistant.bin.util.constants import SYSTEM_PARAMS_PROP_NAME
+from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
 
 MACOS_RUSSIAN_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.milena.premium'
 MACOS_ENGLISH_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.samantha'
@@ -26,7 +25,7 @@ def app_initialize():
     tts_engine = pyttsx3.init()
     tts_engine.setProperty('voice', voice)
 
-    cache[SYSTEM_PARAMS_PROP_NAME] = Parameters(os, tts_engine, language)
+    cache[SYSTEM_PARAMS_PROP_CACHE] = Parameters(os, tts_engine, language)
 
 
 # My first Class - pity to kill it

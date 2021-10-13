@@ -1,5 +1,4 @@
-from voice_assistant.bin.initialize.cache import cache, get_weather_from_cache
-from voice_assistant.bin.util.constants import WEATHER
+from voice_assistant.bin.initialize.cache import cache, get_weather_from_cache, WEATHER_CACHE
 from voice_assistant.bin.service.weather_service import Weather
 
 SPEAK = 'speak'
@@ -9,7 +8,7 @@ ASSISTANT = 'assistant'
 YOU_SILENT = 'you\'re silent'
 WEATHER_REPLY = 'weather'
 
-cache[WEATHER] = Weather()
+cache[WEATHER_CACHE] = Weather()
 
 
 # TODO: technically it's not text commands dictionary anymore. Need fix/rename
