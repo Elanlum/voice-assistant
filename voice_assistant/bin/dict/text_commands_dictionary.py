@@ -9,6 +9,7 @@ YOU_SILENT = 'you\'re silent'
 WEATHER_REPLY = 'weather'
 INSERT_YA_LOGIN = 'insert Yandex login'
 INSERT_YA_PWD = 'insert Yandex password'
+YANDEX_LOGIN_ERROR = 'Yandex login error'
 
 cache[WEATHER_CACHE] = Weather()
 
@@ -28,7 +29,8 @@ def text_commands():
                         f'city today is {get_weather_from_cache().temperature} degrees, '
                         f'{get_weather_from_cache().status}'],
         INSERT_YA_LOGIN: ['Введите логин Yandex: ', 'Type Yandex login: '],
-        INSERT_YA_PWD: ['Введите пароль Yandex: ', 'Type Yandex password: '],
+        INSERT_YA_PWD: ['Введите пароль Яндекс: ', 'Type Yandex password: '],
+        YANDEX_LOGIN_ERROR: ['Неверный логин или пароль Яндекс', 'Wrong Yandex login or password']
     }
 
 
