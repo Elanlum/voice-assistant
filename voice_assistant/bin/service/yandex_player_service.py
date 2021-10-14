@@ -2,11 +2,11 @@ import os
 import sys
 from yandex_music import Client
 from playsound import playsound
+
 from voice_assistant.bin.initialize.cache import cache, get_yandex_token_from_cache, YANDEX_TOKEN
 from voice_assistant.bin.service.text_commands_resolver import return_command
 from voice_assistant.bin.dict.text_commands_dictionary import INSERT_YA_LOGIN, INSERT_YA_PWD
-
-from voice_assistant.bin.service.config_service import read_credentials, write_credentials,  YANDEX_BLOCK, YANDEX_LOGIN, \
+from voice_assistant.bin.service.config_service import read_credentials, write_credentials, YANDEX_BLOCK, YANDEX_LOGIN, \
     YANDEX_PWD, TRACK_NAME
 
 config = read_credentials()
@@ -47,7 +47,7 @@ def enter_credentials():
 
 
 def save_credentials(login, pwd):
-    config['Yandex'] = {'yandex.login': login,
-                        'yandex.password': pwd}
+    config[YANDEX_BLOCK] = {YANDEX_LOGIN: login,
+                            YANDEX_PWD: pwd}
     # TODO: writing of all blocks happens here
     write_credentials(config)
