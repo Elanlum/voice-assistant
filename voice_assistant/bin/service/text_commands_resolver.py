@@ -1,4 +1,4 @@
-from voice_assistant.bin.dict.text_commands_dictionary import text_commands, get_ru_response, get_en_response
+from voice_assistant.bin.dict.text_commands_dictionary import get_ru_response, get_en_response
 from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
 from voice_assistant.bin.util.constants import TEXT_KEY
 

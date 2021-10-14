@@ -19,12 +19,8 @@ def yandex_authorize():
         pwd = config.get(YANDEX_BLOCK, YANDEX_PWD)
 
         if not login or not pwd:
-            login = input(return_command(INSERT_YA_LOGIN))
-            pwd = input(return_command(INSERT_YA_PWD))
-            config['Yandex'] = {'yandex.login': login,
-                                'yandex.password': pwd}
-            # TODO: writing of all blocks happens here
-            write_credentials(config)
+            (login, pwd) = enter_credentials()
+            save_credentials(login, pwd)
 
         token = Client().generate_token_by_username_and_password(login, pwd)
         write_token_to_cache(token)
@@ -42,3 +38,16 @@ def play_yandex_last_favourite_track():
 
 def write_token_to_cache(token):
     cache[YANDEX_TOKEN] = token
+
+
+def enter_credentials():
+    login = input(return_command(INSERT_YA_LOGIN))
+    pwd = input(return_command(INSERT_YA_PWD))
+    return login, pwd
+
+
+def save_credentials(login, pwd):
+    config['Yandex'] = {'yandex.login': login,
+                        'yandex.password': pwd}
+    # TODO: writing of all blocks happens here
+    write_credentials(config)
