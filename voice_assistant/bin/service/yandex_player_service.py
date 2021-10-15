@@ -24,7 +24,7 @@ def yandex_authorize():
             # TODO: in general there is no need in saving creds into file
             save_credentials(login, pwd)
 
-        get_token_by_credentials(login, pwd)
+        token = get_token_by_credentials(login, pwd)
 
     return Client.from_token(token)
 
@@ -58,5 +58,6 @@ def get_token_by_credentials(login, pwd):
     try:
         token = Client().generate_token_by_username_and_password(login, pwd)
         write_token_to_cache(token)
+        return token
     except YandexMusicError:
         print_command(YANDEX_LOGIN_ERROR)
