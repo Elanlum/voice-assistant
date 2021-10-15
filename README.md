@@ -4,12 +4,11 @@
 
 ### Yandex.Music
 
-For early development purpose you have to create `cred.properties` file in root and store
+For early development purpose you have to create `cred.properties` file in root and store your token there
 
 ```
 [Yandex]
-yandex.login = login
-yandex.password = pass
+yandex.token = token
 ```
 
 ### OpenWeather
@@ -32,10 +31,10 @@ weather.apikey = apikey
 * Windows and macOS support for selecting voice for tts (! Done 09.23.21)
 * Added voice-controlled file opening (! Done 09.24.21)
 * Add support of phrases based on selected language and resource bundles (! Done 10.07.21)
+* Add console input for login, password, token input for services and store them in cache (! Done 10.16.21)
 * Improve cache storage for tokens (Yandex, OpenWeather)
 * Show current time based on current location
-* Add console input for login, password, token input for services and store them in cache
-* Create a way of stopping music without terminating app
+* Create a way of stopping music without terminating app (Keyboard listener or input of any key)
 * Better location definition, not based on ip request
 * Packaging of the application to something (probably app)
 * Dockerfile for deploy of project to some cloud

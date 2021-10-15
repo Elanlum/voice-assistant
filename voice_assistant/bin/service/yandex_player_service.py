@@ -16,6 +16,7 @@ config = read_credentials()
 def yandex_authorize():
     token = get_yandex_token_from_cache()
     if not token:
+        # TODO: handle situations when file is empty: no block or no option yandex.token
         token = config.get(YANDEX_BLOCK, YANDEX_TOKEN)
 
         if not token:
