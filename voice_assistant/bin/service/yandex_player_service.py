@@ -3,6 +3,7 @@ import sys
 from yandex_music import Client
 from yandex_music.exceptions import YandexMusicError
 from playsound import playsound
+from configparser import NoOptionError, NoSectionError
 
 from voice_assistant.bin.initialize.cache import cache, get_yandex_token_from_cache, YANDEX_TOKEN
 from voice_assistant.bin.service.text_commands_resolver import print_command, return_command
@@ -16,9 +17,7 @@ config = read_credentials()
 def yandex_authorize():
     token = get_yandex_token_from_cache()
     if not token:
-        # TODO: handle situations when file is empty: no block or no option yandex.token
-        token = config.get(YANDEX_BLOCK, YANDEX_TOKEN)
-
+        token = get_token_from_file()
         if not token:
             (login, pwd) = enter_credentials()
             token = get_token_by_credentials(login, pwd)
@@ -58,3 +57,13 @@ def get_token_by_credentials(login, pwd):
         return token
     except YandexMusicError:
         print_command(YANDEX_LOGIN_ERROR)
+
+
+def get_token_from_file():
+    try:
+        return config.get(YANDEX_BLOCK, YANDEX_TOKEN)
+    except NoOptionError:
+        pass
+    except NoSectionError:
+        pass
+#
