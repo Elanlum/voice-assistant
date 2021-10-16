@@ -1,7 +1,7 @@
 import os
 import sys
 from yandex_music import Client
-from yandex_music.exceptions import BadRequest, Unauthorized, YandexMusicError
+from yandex_music.exceptions import BadRequest
 from playsound import playsound
 
 from voice_assistant.bin.initialize.cache import cache, get_yandex_token_from_cache, YANDEX_TOKEN
