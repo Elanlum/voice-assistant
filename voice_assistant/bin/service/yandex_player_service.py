@@ -3,13 +3,12 @@ import sys
 from yandex_music import Client
 from yandex_music.exceptions import YandexMusicError
 from playsound import playsound
-from configparser import NoOptionError, NoSectionError
 
 from voice_assistant.bin.initialize.cache import cache, get_yandex_token_from_cache, YANDEX_TOKEN
 from voice_assistant.bin.service.text_commands_resolver import print_command, return_command
 from voice_assistant.bin.dict.text_commands_dictionary import INSERT_YA_LOGIN, INSERT_YA_PWD, YANDEX_LOGIN_ERROR
 from voice_assistant.bin.service.config_service import read_credentials, write_credentials, YANDEX_BLOCK, TRACK_NAME, \
-    YANDEX_TOKEN
+    YANDEX_TOKEN, get_from_cred_file
 
 config = read_credentials()
 
@@ -17,7 +16,7 @@ config = read_credentials()
 def yandex_authorize():
     token = get_yandex_token_from_cache()
     if not token:
-        token = get_token_from_file()
+        token = get_from_cred_file(YANDEX_BLOCK, YANDEX_TOKEN)
         if not token:
             (login, pwd) = enter_credentials()
             token = get_token_by_credentials(login, pwd)
@@ -57,13 +56,3 @@ def get_token_by_credentials(login, pwd):
         return token
     except YandexMusicError:
         print_command(YANDEX_LOGIN_ERROR)
-
-
-def get_token_from_file():
-    try:
-        return config.get(YANDEX_BLOCK, YANDEX_TOKEN)
-    except NoOptionError:
-        pass
-    except NoSectionError:
-        pass
-#

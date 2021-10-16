@@ -1,4 +1,4 @@
-import configparser
+from configparser import RawConfigParser, NoSectionError, NoOptionError
 
 CRED_PROPERTIES = '../cred.properties'
 CONFIG_PROPERTIES = '../config.properties'
@@ -8,7 +8,7 @@ YANDEX_TOKEN = 'yandex.token'
 WEATHER_BLOCK = 'OpenWeather'
 WEATHER_APIKEY = 'weather.apikey'
 
-configurer = configparser.RawConfigParser()
+configurer = RawConfigParser()
 
 
 def read_credentials():
@@ -24,3 +24,13 @@ def read_app_config():
 def write_credentials(config):
     with open(CRED_PROPERTIES, 'w') as cred_file:
         config.write(cred_file)
+
+
+def get_from_cred_file(block, option):
+    config = read_credentials()
+    try:
+        return config.get(block, option)
+    except NoOptionError:
+        pass
+    except NoSectionError:
+        pass
