@@ -10,7 +10,7 @@ from voice_assistant.bin.dict.text_commands_dictionary import INSERT_YA_LOGIN, I
 from voice_assistant.bin.service.config_service import read_credentials, write_credentials, YANDEX_BLOCK, TRACK_NAME, \
     YANDEX_TOKEN, get_from_cred_file
 
-config = read_credentials()
+configurer = read_credentials()
 
 
 def yandex_authorize():
@@ -59,6 +59,5 @@ def write_token_to_cache(token):
 
 
 def save_token(token):
-    config[YANDEX_BLOCK] = {YANDEX_TOKEN: token}
-    # TODO: writing of all blocks happens here
-    write_credentials(config)
+    configurer[YANDEX_BLOCK] = {YANDEX_TOKEN: token}
+    write_credentials(configurer)

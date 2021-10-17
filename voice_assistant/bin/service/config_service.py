@@ -8,17 +8,17 @@ YANDEX_TOKEN = 'yandex.token'
 WEATHER_BLOCK = 'OpenWeather'
 WEATHER_APIKEY = 'weather.apikey'
 
-configurer = RawConfigParser()
-
 
 def read_credentials():
-    configurer.read(CRED_PROPERTIES)
-    return configurer
+    config = RawConfigParser()
+    config.read(CRED_PROPERTIES)
+    return config
 
 
 def read_app_config():
-    configurer.read(CONFIG_PROPERTIES)
-    return configurer
+    config = RawConfigParser()
+    config.read(CONFIG_PROPERTIES)
+    return config
 
 
 def write_credentials(config):
