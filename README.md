@@ -13,7 +13,8 @@ yandex.token = token
 
 ### OpenWeather
 
-Register or sign in to your account openweathermap.org and copy your ApiKey from your profile into properties file
+Register or sign in to your account openweathermap.org and copy your ApiKey from your profile into cred.properties file
+located in root folder of the project
 
 ```
 [OpenWeather]
