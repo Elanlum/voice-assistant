@@ -1,11 +1,15 @@
+from voice_assistant.bin.service.weather import Weather
+
 WEATHER_CACHE = 'weather_cache_key'
 SYSTEM_PARAMS_PROP_CACHE = 'system_params_cache'
 YANDEX_TOKEN = 'yandex.token'
+WEATHER_APIKEY = 'weather.apikey'
 
 cache = {
     YANDEX_TOKEN: '',
-    WEATHER_CACHE: None,
-    SYSTEM_PARAMS_PROP_CACHE: None
+    WEATHER_CACHE: Weather(),
+    SYSTEM_PARAMS_PROP_CACHE: None,
+    WEATHER_APIKEY: ''
 }
 
 

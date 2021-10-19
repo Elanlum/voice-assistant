@@ -1,5 +1,4 @@
-from voice_assistant.bin.initialize.cache import cache, get_weather_from_cache, WEATHER_CACHE
-from voice_assistant.bin.service.weather_service import Weather
+from voice_assistant.bin.initialize.cache import get_weather_from_cache
 
 SPEAK = 'speak'
 DONT_HEAR = 'cant hear you'
@@ -10,8 +9,8 @@ WEATHER_REPLY = 'weather'
 INSERT_YA_LOGIN = 'insert Yandex login'
 INSERT_YA_PWD = 'insert Yandex password'
 YANDEX_LOGIN_ERROR = 'Yandex login error'
-
-cache[WEATHER_CACHE] = Weather()
+INSERT_OPEN_WEATHER_APIKEY = 'insert OpenWeather ApiKey'
+INVALID_API_KEY = 'Invalid ApiKey'
 
 
 # TODO: technically it's not text commands dictionary anymore. Need fix/rename
@@ -30,7 +29,9 @@ def text_commands():
                         f'{get_weather_from_cache().status}'],
         INSERT_YA_LOGIN: ['Введите логин Yandex: ', 'Type Yandex login: '],
         INSERT_YA_PWD: ['Введите пароль Яндекс: ', 'Type Yandex password: '],
-        YANDEX_LOGIN_ERROR: ['Неверный логин или пароль Яндекс', 'Wrong Yandex login or password']
+        INSERT_OPEN_WEATHER_APIKEY: ['Введите OpenWeather API Key: ', 'Insert OpenWeather API Key: '],
+        YANDEX_LOGIN_ERROR: ['Неверный логин или пароль Яндекс', 'Wrong Yandex login or password'],
+        INVALID_API_KEY: ['Введен неверный API Key', 'Invalid API Key provided']
     }
 
 

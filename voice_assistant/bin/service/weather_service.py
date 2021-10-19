@@ -1,35 +1,50 @@
 from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
+from pyowm.commons.exceptions import UnauthorizedError
 
+from voice_assistant.bin.initialize.cache import cache
 from voice_assistant.bin.service import location_info_service
-from voice_assistant.bin.service.config_service import read_credentials, read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
+from voice_assistant.bin.service.config_service import write_credentials, get_from_cred_file, read_credentials, \
+    read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
 from voice_assistant.bin.initialize.cache import get_params_from_cache
+from voice_assistant.bin.service.text_commands_resolver import print_command, return_command
+from voice_assistant.bin.dict.text_commands_dictionary import INSERT_OPEN_WEATHER_APIKEY, INVALID_API_KEY
 
 cred_config = read_credentials()
 app_config = read_app_config()
 
 
 # TODO: rework usage of configs here, they should be in cache already (see if reading on fly works)
-def config_owm():
-    if cred_config.has_option(WEATHER_BLOCK, WEATHER_APIKEY):
-        api_key = cred_config.get(WEATHER_BLOCK, WEATHER_APIKEY)
+def config_weather_manager():
+    apikey = get_from_cred_file(WEATHER_BLOCK, WEATHER_APIKEY)
+
+    if not apikey or apikey is None:
+        apikey = input(return_command(INSERT_OPEN_WEATHER_APIKEY))
+        write_apikey_to_cache(apikey)
+        save_apikey(apikey)
 
     owm_config = get_default_config()
     params = get_params_from_cache()
     params.get_language()
     owm_config['language'] = params.get_language()
-    return OWM(api_key, owm_config)
+    try:
+        owm = OWM(apikey, owm_config)
+        return owm.weather_manager()
+    except UnauthorizedError:
+        print_command(INVALID_API_KEY)
 
 
 def get_weather_info(city):
-    owm = config_owm()
-    mgr = owm.weather_manager()
-    return mgr.weather_at_place(city + ', RU').weather
+    try:
+        mgr = config_weather_manager()
+        return mgr.weather_at_place(city + ', RU').weather
+    except UnauthorizedError:
+        print("AAAA")
+        print_command(INVALID_API_KEY)
 
 
 def get_weather_local_info():
-    owm = config_owm()
-    mgr = owm.weather_manager()
+    mgr = config_weather_manager()
     location = location_info_service.get_region_city()
     return mgr.weather_at_place(location).weather
 
@@ -46,17 +61,10 @@ def get_weather_status(city):
     return get_weather_info(city).detailed_status
 
 
-class Weather:
-    def __init__(self):
-        self.target_city = ''
-        self.temperature = ''
-        self.status = ''
+def save_apikey(apikey):
+    cred_config[WEATHER_BLOCK] = {WEATHER_APIKEY: apikey}
+    write_credentials(cred_config)
 
-    def set_temperature(self, temperature):
-        self.temperature = temperature
 
-    def set_status(self, status):
-        self.status = status
-
-    def set_target_city(self, target_city):
-        self.target_city = target_city
+def write_apikey_to_cache(apikey):
+    cache[WEATHER_APIKEY] = apikey
