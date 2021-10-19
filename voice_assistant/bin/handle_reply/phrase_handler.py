@@ -1,4 +1,4 @@
-from pyowm.commons.exceptions import NotFoundError
+from pyowm.commons.exceptions import NotFoundError, UnauthorizedError
 import re
 
 from voice_assistant.bin.service.voice_recognize_service import recognize_voice
@@ -9,7 +9,8 @@ from voice_assistant.bin.service import dictionary_service as dict
 from voice_assistant.bin.initialize.cache import is_language_ru
 from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, \
     reply_search_google, reply_open_file
-
+from voice_assistant.bin.service.text_commands_resolver import return_command
+from voice_assistant.bin.dict.text_commands_dictionary import INVALID_API_KEY
 
 
 def handle_phrase(user_text):
@@ -83,6 +84,8 @@ def select_city_and_reply():
             city_found = True
         except NotFoundError:
             reply(get_response(const.CITY_NOT_FOUND))
+        except UnauthorizedError:
+            reply(return_command(INVALID_API_KEY))
 
 
 def extract_request_part(key_phrase, inp):

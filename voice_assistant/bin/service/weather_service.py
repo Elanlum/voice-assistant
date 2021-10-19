@@ -1,6 +1,5 @@
 from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
-from pyowm.commons.exceptions import UnauthorizedError
 
 from voice_assistant.bin.initialize.cache import cache
 from voice_assistant.bin.service import location_info_service
@@ -21,26 +20,20 @@ def config_weather_manager():
     if not apikey or apikey is None:
         apikey = input(return_command(INSERT_OPEN_WEATHER_APIKEY))
         write_apikey_to_cache(apikey)
+        # TODO: do not save invalid API Key
         save_apikey(apikey)
 
     owm_config = get_default_config()
     params = get_params_from_cache()
     params.get_language()
     owm_config['language'] = params.get_language()
-    try:
-        owm = OWM(apikey, owm_config)
-        return owm.weather_manager()
-    except UnauthorizedError:
-        print_command(INVALID_API_KEY)
+    owm = OWM(apikey, owm_config)
+    return owm.weather_manager()
 
 
 def get_weather_info(city):
-    try:
-        mgr = config_weather_manager()
-        return mgr.weather_at_place(city + ', RU').weather
-    except UnauthorizedError:
-        print("AAAA")
-        print_command(INVALID_API_KEY)
+    mgr = config_weather_manager()
+    return mgr.weather_at_place(city + ', RU').weather
 
 
 def get_weather_local_info():

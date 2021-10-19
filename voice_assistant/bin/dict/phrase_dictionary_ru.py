@@ -5,6 +5,7 @@ from voice_assistant.bin.util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, T
 
 # Dictionary consists of phrases with correspondent array of request and response:
 # phrase : [request, response]
+# TODO: remove all auto responses from here, leave only request-response pairs
 def dictionary_ru():
     return {
         HELLO: ['привет', 'Привет-привет!'],
@@ -16,8 +17,11 @@ def dictionary_ru():
         PLAY_YANDEX: ['играй яндекс', 'Играю Яндекс'],
         TURN_ON_YANDEX: ['включи яндекс', 'Играю Яндекс'],
         WHAT_WEATHER: ['какая погода', 'Температура сегодня'],
+        # TODO: remove this
         NO_PHRASE: ['Не понимаю Вас', 'Не понимаю Вас'],
+        # TODO: remove this
         SELECT_CITY: ['Какой город интересует', 'Какой город интересует'],
+        # TODO: remove this
         CITY_NOT_FOUND: ['Город не найден', 'Город не найден, попробуйте снова'],
         CANCEL: ['отмена', 'Действие отменено'],
         BROWSE: ['перейди на сайт', 'Перехожу на запрошенный сайт'],
