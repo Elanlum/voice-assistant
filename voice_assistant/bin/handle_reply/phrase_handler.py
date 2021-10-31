@@ -11,7 +11,7 @@ from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply
     reply_search_google, reply_open_file
 from voice_assistant.bin.service.text_commands_resolver import return_command
 from voice_assistant.bin.dict.text_commands_dictionary import INVALID_API_KEY
-from voice_assistant.bin.dict.text_commands_dictionary import SELECT_CITY, CITY_NOT_FOUND
+from voice_assistant.bin.dict.text_commands_dictionary import SELECT_CITY, CITY_NOT_FOUND, WRONG_WEBSITE
 
 
 def handle_phrase(user_text):
@@ -49,8 +49,7 @@ def weather(voice_params):
 def browse(voice_params):
     url_part = extract_request_part(get_request(voice_params.phrase), voice_params.request)
     if re.search(const.CYRILLIC_PATTERN, url_part) or re.match(const.WEBSITE_PATTERN, url_part) is None:
-        response = dict.get_response(const.WRONG_WEBSITE)
-        reply(response)
+        reply(return_command(WRONG_WEBSITE))
     else:
         reply_to_browse(voice_params.response, url_part)
 

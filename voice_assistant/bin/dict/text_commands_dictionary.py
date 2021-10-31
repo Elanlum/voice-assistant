@@ -14,6 +14,7 @@ INVALID_API_KEY = 'Invalid ApiKey'
 NO_PHRASE = 'no phrase'
 SELECT_CITY = 'select city'
 CITY_NOT_FOUND = 'city not found'
+WRONG_WEBSITE = 'wrong website'
 
 
 # TODO: technically it's not text commands dictionary anymore. Need fix/rename
@@ -37,7 +38,8 @@ def text_commands():
         INVALID_API_KEY: ['Введен неверный API Key', 'Invalid API Key provided'],
         NO_PHRASE: ['Не понимаю Вас', 'I don\'t get it'],
         SELECT_CITY: ['Какой город интересует', 'Which city'],
-        CITY_NOT_FOUND: ['Город не найден, попробуйте снова', 'City not found, try again']
+        CITY_NOT_FOUND: ['Город не найден, попробуйте снова', 'City not found, try again'],
+        WRONG_WEBSITE: ['Вы неверно назвали сайт', 'Wrong website name']
     }
 
 
