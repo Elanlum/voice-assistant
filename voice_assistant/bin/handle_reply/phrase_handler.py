@@ -11,6 +11,7 @@ from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply
     reply_search_google, reply_open_file
 from voice_assistant.bin.service.text_commands_resolver import return_command
 from voice_assistant.bin.dict.text_commands_dictionary import INVALID_API_KEY
+from voice_assistant.bin.dict.text_commands_dictionary import SELECT_CITY, CITY_NOT_FOUND
 
 
 def handle_phrase(user_text):
@@ -69,7 +70,7 @@ def base_case(voice_params):
 
 
 def select_city_and_reply():
-    reply(get_request(const.SELECT_CITY))
+    reply(return_command(SELECT_CITY))
 
     city_found = False
     while not city_found:
@@ -83,7 +84,7 @@ def select_city_and_reply():
             reply_weather(user_command)
             city_found = True
         except NotFoundError:
-            reply(get_response(const.CITY_NOT_FOUND))
+            reply(return_command(CITY_NOT_FOUND))
         except UnauthorizedError:
             reply(return_command(INVALID_API_KEY))
 

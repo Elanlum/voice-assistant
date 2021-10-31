@@ -1,5 +1,5 @@
-from voice_assistant.bin.util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, NO_PHRASE, \
-    SELECT_CITY, CITY_NOT_FOUND, CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE, \
+from voice_assistant.bin.util.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, TURN_ON_YANDEX, WHAT_WEATHER, \
+    CANCEL, HELLO, HOW_ARE_YOU, HOWS_DAY, WHOS_SIRI, BROWSE, SEARCH, OPEN_FILE, \
     WHAT_CAN_YOU, WRONG_WEBSITE, WHO_ARE_YOU, WHATS_YOUR_NAME, WHAT_TIME
 
 
@@ -16,9 +16,6 @@ def dictionary_en():
         PLAY_YANDEX: ['play yandex', 'Playing Yandex'],
         TURN_ON_YANDEX: ['turn on yandex', 'Playing Yandex'],
         WHAT_WEATHER: ['what is the weather', 'The temperature today'],
-        NO_PHRASE: ['I don\'t get it', 'I don\'t get it'],
-        SELECT_CITY: ['Which city', 'Which city'],
-        CITY_NOT_FOUND: ['City not found', 'City not found, try again'],
         CANCEL: ['Cancel', 'Action cancelled'],
         BROWSE: ['browse', 'Browsing'],
         SEARCH: ['search', 'Searching in Google'],

@@ -11,6 +11,9 @@ INSERT_YA_PWD = 'insert Yandex password'
 YANDEX_LOGIN_ERROR = 'Yandex login error'
 INSERT_OPEN_WEATHER_APIKEY = 'insert OpenWeather ApiKey'
 INVALID_API_KEY = 'Invalid ApiKey'
+NO_PHRASE = 'no phrase'
+SELECT_CITY = 'select city'
+CITY_NOT_FOUND = 'city not found'
 
 
 # TODO: technically it's not text commands dictionary anymore. Need fix/rename
@@ -31,7 +34,10 @@ def text_commands():
         INSERT_YA_PWD: ['Введите пароль Яндекс: ', 'Type Yandex password: '],
         INSERT_OPEN_WEATHER_APIKEY: ['Введите OpenWeather API Key: ', 'Insert OpenWeather API Key: '],
         YANDEX_LOGIN_ERROR: ['Неверный логин или пароль Яндекс', 'Wrong Yandex login or password'],
-        INVALID_API_KEY: ['Введен неверный API Key', 'Invalid API Key provided']
+        INVALID_API_KEY: ['Введен неверный API Key', 'Invalid API Key provided'],
+        NO_PHRASE: ['Не понимаю Вас', 'I don\'t get it'],
+        SELECT_CITY: ['Какой город интересует', 'Which city'],
+        CITY_NOT_FOUND: ['Город не найден, попробуйте снова', 'City not found, try again']
     }
 
 

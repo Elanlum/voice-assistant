@@ -1,6 +1,3 @@
-SELECT_CITY = 'select city'
-CITY_NOT_FOUND = 'city not found'
-NO_PHRASE = 'no phrase'
 HELLO = 'hello'
 BYE = 'bye'
 WHAT_CAN_YOU = 'what you can'
