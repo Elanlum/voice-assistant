@@ -7,7 +7,7 @@ from voice_assistant.bin.service.config_service import write_credentials, get_fr
     read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
 from voice_assistant.bin.initialize.cache import get_params_from_cache
 from voice_assistant.bin.service.text_commands_resolver import print_command, return_command
-from voice_assistant.bin.dict.text_commands_dictionary import INSERT_OPEN_WEATHER_APIKEY, INVALID_API_KEY
+from voice_assistant.bin.dict.auto_response_dictionary import INSERT_OPEN_WEATHER_APIKEY, INVALID_API_KEY
 
 cred_config = read_credentials()
 app_config = read_app_config()

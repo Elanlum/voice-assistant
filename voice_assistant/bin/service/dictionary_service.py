@@ -2,7 +2,7 @@ from voice_assistant.bin.dict.phrase_dictionary_en import dictionary_en
 from voice_assistant.bin.dict.phrase_dictionary_ru import dictionary_ru
 from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
 from voice_assistant.bin.service.text_commands_resolver import return_command
-from voice_assistant.bin.dict.text_commands_dictionary import NO_PHRASE
+from voice_assistant.bin.dict.auto_response_dictionary import NO_PHRASE
 
 # Selects dictionary based on language setting, extracts requests and responses from it
 

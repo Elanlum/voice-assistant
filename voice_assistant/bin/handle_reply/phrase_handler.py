@@ -10,8 +10,8 @@ from voice_assistant.bin.initialize.cache import is_language_ru
 from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, \
     reply_search_google, reply_open_file
 from voice_assistant.bin.service.text_commands_resolver import return_command
-from voice_assistant.bin.dict.text_commands_dictionary import INVALID_API_KEY
-from voice_assistant.bin.dict.text_commands_dictionary import SELECT_CITY, CITY_NOT_FOUND, WRONG_WEBSITE
+from voice_assistant.bin.dict.auto_response_dictionary import INVALID_API_KEY
+from voice_assistant.bin.dict.auto_response_dictionary import SELECT_CITY, CITY_NOT_FOUND, WRONG_WEBSITE
 
 
 def handle_phrase(user_text):

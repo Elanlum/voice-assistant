@@ -17,8 +17,7 @@ CITY_NOT_FOUND = 'city not found'
 WRONG_WEBSITE = 'wrong website'
 
 
-# TODO: technically it's not text commands dictionary anymore. Need fix/rename
-def text_commands():
+def auto_response():
     return {
         SPEAK: ['Говорите, пожалуйста >>>', 'Speak, please >>>'],
         DONT_HEAR: ['Вас не слышно', 'Can\'t hear you'],
@@ -44,8 +43,8 @@ def text_commands():
 
 
 def get_ru_response(command):
-    return text_commands()[command][0]
+    return auto_response()[command][0]
 
 
 def get_en_response(command):
-    return text_commands()[command][1]
+    return auto_response()[command][1]
