@@ -1,20 +1,7 @@
 from voice_assistant.bin.initialize.cache import get_weather_from_cache
-
-SPEAK = 'speak'
-DONT_HEAR = 'cant hear you'
-YOU_SAID = 'you\'ve said'
-ASSISTANT = 'assistant'
-YOU_SILENT = 'you\'re silent'
-WEATHER_REPLY = 'weather'
-INSERT_YA_LOGIN = 'insert Yandex login'
-INSERT_YA_PWD = 'insert Yandex password'
-YANDEX_LOGIN_ERROR = 'Yandex login error'
-INSERT_OPEN_WEATHER_APIKEY = 'insert OpenWeather ApiKey'
-INVALID_API_KEY = 'Invalid ApiKey'
-NO_PHRASE = 'no phrase'
-SELECT_CITY = 'select city'
-CITY_NOT_FOUND = 'city not found'
-WRONG_WEBSITE = 'wrong website'
+from voice_assistant.bin.dict.constants import SPEAK, DONT_HEAR, YOU_SAID, ASSISTANT, YOU_SILENT, WEATHER_REPLY, \
+    INSERT_YA_LOGIN, INSERT_YA_PWD, INSERT_OPEN_WEATHER_APIKEY, YANDEX_LOGIN_ERROR, INVALID_API_KEY, NO_PHRASE, \
+    SELECT_CITY, CITY_NOT_FOUND, WRONG_WEBSITE
 
 
 def auto_response():

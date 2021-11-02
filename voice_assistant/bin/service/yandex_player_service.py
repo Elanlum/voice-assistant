@@ -4,11 +4,11 @@ from yandex_music import Client
 from yandex_music.exceptions import BadRequest
 from playsound import playsound
 
-from voice_assistant.bin.initialize.cache import cache, get_yandex_token_from_cache, YANDEX_TOKEN
-from voice_assistant.bin.service.text_commands_resolver import print_command, return_command
+from voice_assistant.bin.initialize.cache import cache, get_yandex_token_from_cache
+from voice_assistant.bin.service.auto_commands_resolver import print_command, return_command
 from voice_assistant.bin.dict.auto_response_dictionary import INSERT_YA_LOGIN, INSERT_YA_PWD, YANDEX_LOGIN_ERROR
-from voice_assistant.bin.service.config_service import read_credentials, write_credentials, YANDEX_BLOCK, TRACK_NAME, \
-    YANDEX_TOKEN, get_from_cred_file
+from voice_assistant.bin.service.config_service import read_credentials, write_credentials, get_from_cred_file
+from voice_assistant.bin.util.constants import YANDEX_TOKEN, YANDEX_BLOCK, TRACK_NAME
 
 configurer = read_credentials()
 

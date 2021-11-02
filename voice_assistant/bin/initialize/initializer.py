@@ -3,14 +3,12 @@ import platform
 
 from voice_assistant.bin.service.config_service import read_app_config
 from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
-
-MACOS_RUSSIAN_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.milena.premium'
-MACOS_ENGLISH_FEMALE_VOICE = 'com.apple.speech.synthesis.voice.samantha'
-WIN_ENGLISH_FEMALE_VOICE = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
-WIN_RUSSIAN_FEMALE_VOICE = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0'
+from voice_assistant.bin.util.constants import WIN_RUSSIAN_FEMALE_VOICE, WIN_ENGLISH_FEMALE_VOICE, \
+    MACOS_RUSSIAN_FEMALE_VOICE, MACOS_ENGLISH_FEMALE_VOICE
 
 
 def app_initialize():
+
     app_config = read_app_config()
     language = app_config.get('Global', 'app.language')
 

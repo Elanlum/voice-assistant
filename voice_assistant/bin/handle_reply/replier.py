@@ -4,7 +4,7 @@ from voice_assistant.bin.service.yandex_player_service import play_yandex_last_f
 from voice_assistant.bin.service.voice_web_search_service import go_to_website, search_google
 from voice_assistant.bin.service.file_service import open_file
 from voice_assistant.bin.initialize.cache import get_params_from_cache, is_language_ru, get_weather_from_cache
-from voice_assistant.bin.service.text_commands_resolver import print_command
+from voice_assistant.bin.service.auto_commands_resolver import print_command
 from voice_assistant.bin.dict.auto_response_dictionary import ASSISTANT, WEATHER_REPLY, get_en_response, get_ru_response
 
 

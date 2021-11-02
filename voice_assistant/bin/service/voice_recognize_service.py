@@ -1,7 +1,8 @@
 import speech_recognition as sr
 from voice_assistant.bin.service.config_service import read_app_config
-from voice_assistant.bin.service.text_commands_resolver import print_command
+from voice_assistant.bin.service.auto_commands_resolver import print_command
 from voice_assistant.bin.dict.auto_response_dictionary import SPEAK, YOU_SAID
+
 
 app_config = read_app_config()
 phrase_time_limit = app_config.get('Global', 'phrase.time.limit')

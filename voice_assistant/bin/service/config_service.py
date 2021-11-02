@@ -1,12 +1,5 @@
 from configparser import RawConfigParser, NoSectionError, NoOptionError
-
-CRED_PROPERTIES = '../cred.properties'
-CONFIG_PROPERTIES = '../config.properties'
-YANDEX_BLOCK = 'Yandex'
-TRACK_NAME = 'yandex_track.mp3'
-YANDEX_TOKEN = 'yandex.token'
-WEATHER_BLOCK = 'OpenWeather'
-WEATHER_APIKEY = 'weather.apikey'
+from voice_assistant.bin.util.constants import CRED_PROPERTIES, CONFIG_PROPERTIES
 
 
 def read_credentials():

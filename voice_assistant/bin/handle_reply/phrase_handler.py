@@ -5,11 +5,10 @@ from voice_assistant.bin.service.voice_recognize_service import recognize_voice
 from voice_assistant.bin.service.translator_service import translate_ru_en
 from voice_assistant.bin.util import constants as const
 from voice_assistant.bin.service.dictionary_service import get_voice_params, get_request, get_response
-from voice_assistant.bin.service import dictionary_service as dict
 from voice_assistant.bin.initialize.cache import is_language_ru
 from voice_assistant.bin.handle_reply.replier import reply, reply_weather, reply_music, reply_bye, reply_to_browse, \
     reply_search_google, reply_open_file
-from voice_assistant.bin.service.text_commands_resolver import return_command
+from voice_assistant.bin.service.auto_commands_resolver import return_command
 from voice_assistant.bin.dict.auto_response_dictionary import INVALID_API_KEY
 from voice_assistant.bin.dict.auto_response_dictionary import SELECT_CITY, CITY_NOT_FOUND, WRONG_WEBSITE
 

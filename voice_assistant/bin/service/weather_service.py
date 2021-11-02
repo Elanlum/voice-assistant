@@ -4,16 +4,16 @@ from pyowm.utils.config import get_default_config
 from voice_assistant.bin.initialize.cache import cache
 from voice_assistant.bin.service import location_info_service
 from voice_assistant.bin.service.config_service import write_credentials, get_from_cred_file, read_credentials, \
-    read_app_config, WEATHER_APIKEY, WEATHER_BLOCK
+    read_app_config
+from voice_assistant.bin.util.constants import WEATHER_APIKEY, WEATHER_BLOCK
 from voice_assistant.bin.initialize.cache import get_params_from_cache
-from voice_assistant.bin.service.text_commands_resolver import print_command, return_command
-from voice_assistant.bin.dict.auto_response_dictionary import INSERT_OPEN_WEATHER_APIKEY, INVALID_API_KEY
+from voice_assistant.bin.service.auto_commands_resolver import return_command
+from voice_assistant.bin.dict.auto_response_dictionary import INSERT_OPEN_WEATHER_APIKEY
 
 cred_config = read_credentials()
 app_config = read_app_config()
 
 
-# TODO: rework usage of configs here, they should be in cache already (see if reading on fly works)
 def config_weather_manager():
     apikey = get_from_cred_file(WEATHER_BLOCK, WEATHER_APIKEY)
 
