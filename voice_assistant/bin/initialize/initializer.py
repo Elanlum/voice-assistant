@@ -27,6 +27,7 @@ def app_initialize():
 
 
 # My first Class - pity to kill it
+# TODO: extract
 class Parameters:
     def __init__(self, os, tts_engine, language, dictionary=None):
         self.os = os
