@@ -5,6 +5,7 @@ from voice_assistant.bin.service.config_service import read_app_config
 from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
 from voice_assistant.bin.util.constants import WIN_RUSSIAN_FEMALE_VOICE, WIN_ENGLISH_FEMALE_VOICE, \
     MACOS_RUSSIAN_FEMALE_VOICE, MACOS_ENGLISH_FEMALE_VOICE
+from voice_assistant.bin.objects.parameters import Parameters
 
 
 def app_initialize():
@@ -24,22 +25,3 @@ def app_initialize():
     tts_engine.setProperty('voice', voice)
 
     cache[SYSTEM_PARAMS_PROP_CACHE] = Parameters(os, tts_engine, language)
-
-
-# My first Class - pity to kill it
-# TODO: extract
-class Parameters:
-    def __init__(self, os, tts_engine, language, dictionary=None):
-        self.os = os
-        self.tts_engine = tts_engine
-        self.language = language
-        self.dictionary = dictionary
-
-    def set_dictionary(self, dictionary):
-        self.dictionary = dictionary
-
-    def get_dictionary(self):
-        return self.dictionary
-
-    def get_language(self):
-        return self.language

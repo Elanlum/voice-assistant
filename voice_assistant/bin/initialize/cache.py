@@ -1,4 +1,4 @@
-from voice_assistant.bin.service.weather import Weather
+from voice_assistant.bin.objects.weather import Weather
 from voice_assistant.bin.util.constants import YANDEX_TOKEN, WEATHER_CACHE, SYSTEM_PARAMS_PROP_CACHE, WEATHER_APIKEY
 
 
