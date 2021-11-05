@@ -41,6 +41,7 @@ weather.apikey = apikey
 * Dockerfile for deploy of project to some cloud
 * Create graph structure for replies handling (more flexible dialogue)
 * Write tests, check coverage
+* Add some more goals and description for new features
 
 ### Developing notes:
 
