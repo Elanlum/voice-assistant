@@ -47,17 +47,17 @@ def enter_credentials():
     return login, pwd
 
 
-def get_token_by_credentials(login, pwd):
+def get_token_by_credentials(login: str, pwd: str):
     token = Client().generate_token_by_username_and_password(login, pwd)
     if token == 'None':
         return ''
     return token
 
 
-def write_token_to_cache(token):
+def write_token_to_cache(token: str):
     cache[YANDEX_TOKEN] = token
 
 
-def save_token(token):
+def save_token(token: str):
     configurer[YANDEX_BLOCK] = {YANDEX_TOKEN: token}
     write_credentials(configurer)

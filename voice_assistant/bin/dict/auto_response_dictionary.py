@@ -29,9 +29,9 @@ def auto_response():
     }
 
 
-def get_ru_response(command):
+def get_ru_response(command: str):
     return auto_response()[command][0]
 
 
-def get_en_response(command):
+def get_en_response(command: str):
     return auto_response()[command][1]

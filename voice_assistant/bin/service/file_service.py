@@ -4,7 +4,7 @@ import os
 directory = pathlib.Path.cwd()
 
 
-def open_file(system, file_name_type):
+def open_file(system: str, file_name_type: str):
     (filename, filetype) = select_file_type(file_name_type)
 
     if system == 'Windows':
@@ -15,7 +15,7 @@ def open_file(system, file_name_type):
         system.system(f'xdg-open {directory}/files/{filename}')
 
 
-def select_file_type(file_name_type):
+def select_file_type(file_name_type: str):
     supported_filetypes = ['pdf', 'audio', 'word', 'excel']
 
     for filetype in supported_filetypes:

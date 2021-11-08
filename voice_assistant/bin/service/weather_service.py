@@ -31,7 +31,7 @@ def config_weather_manager():
     return owm.weather_manager()
 
 
-def get_weather_info(city):
+def get_weather_info(city: str):
     mgr = config_weather_manager()
     return mgr.weather_at_place(city + ', RU').weather
 
@@ -42,7 +42,7 @@ def get_weather_local_info():
     return mgr.weather_at_place(location).weather
 
 
-def get_avg_temperature(city):
+def get_avg_temperature(city: str):
     weather_info = get_weather_info(city)
     temperature_type = app_config.get('Global', 'weather.temperature.type')
     temperature_info = weather_info.temperature(temperature_type)
@@ -50,14 +50,14 @@ def get_avg_temperature(city):
     return round(temp_avg)
 
 
-def get_weather_status(city):
+def get_weather_status(city: str):
     return get_weather_info(city).detailed_status
 
 
-def save_apikey(apikey):
+def save_apikey(apikey: str):
     cred_config[WEATHER_BLOCK] = {WEATHER_APIKEY: apikey}
     write_credentials(cred_config)
 
 
-def write_apikey_to_cache(apikey):
+def write_apikey_to_cache(apikey: str):
     cache[WEATHER_APIKEY] = apikey

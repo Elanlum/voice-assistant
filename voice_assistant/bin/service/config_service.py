@@ -14,12 +14,12 @@ def read_app_config():
     return config
 
 
-def write_credentials(config):
+def write_credentials(config: RawConfigParser):
     with open(CRED_PROPERTIES, 'w') as cred_file:
         config.write(cred_file)
 
 
-def get_from_cred_file(block, option):
+def get_from_cred_file(block: str, option: str):
     config = read_credentials()
     try:
         return config.get(block, option)

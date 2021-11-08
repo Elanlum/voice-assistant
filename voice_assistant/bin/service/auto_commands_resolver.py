@@ -3,7 +3,7 @@ from voice_assistant.bin.initialize.cache import cache, SYSTEM_PARAMS_PROP_CACHE
 from voice_assistant.bin.util.constants import TEXT_KEY
 
 
-def print_command(command_name, **kwargs):
+def print_command(command_name: str, **kwargs):
     params = cache[SYSTEM_PARAMS_PROP_CACHE]
     language = params.get_language()
 
@@ -17,7 +17,7 @@ def print_command(command_name, **kwargs):
         print('Something\'s wrong')
 
 
-def return_command(command_name):
+def return_command(command_name: str):
     params = cache[SYSTEM_PARAMS_PROP_CACHE]
     language = params.get_language()
 

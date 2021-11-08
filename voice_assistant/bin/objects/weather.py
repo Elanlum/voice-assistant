@@ -4,11 +4,11 @@ class Weather:
         self.temperature = ''
         self.status = ''
 
-    def set_temperature(self, temperature):
+    def set_temperature(self, temperature: str):
         self.temperature = temperature
 
-    def set_status(self, status):
+    def set_status(self, status: str):
         self.status = status
 
-    def set_target_city(self, target_city):
+    def set_target_city(self, target_city: str):
         self.target_city = target_city

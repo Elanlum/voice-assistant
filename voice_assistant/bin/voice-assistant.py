@@ -16,6 +16,7 @@ def main():
         except sr.UnknownValueError:
             print_command(DONT_HEAR)
         except sr.RequestError:
+            # TODO: log at least something here
             pass
         except sr.WaitTimeoutError:
             print_command(YOU_SILENT)
