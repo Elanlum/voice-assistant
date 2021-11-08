@@ -33,7 +33,7 @@ weather.apikey = apikey
 * Added voice-controlled file opening (! Done 09.24.21)
 * Add support of phrases based on selected language and resource bundles (! Done 10.07.21)
 * Add console input for login, password, token input for services and store them in cache (! Done 10.16.21)
-* Improve cache storage for tokens (Yandex, OpenWeather)
+* Improve cache storage for tokens (Yandex, OpenWeather) (! Done 11.01.21)
 * Show current time based on current location
 * Create a way of stopping music without terminating app (Keyboard listener or input of any key)
 * Better location definition, not based on ip request
@@ -42,6 +42,7 @@ weather.apikey = apikey
 * Create graph structure for replies handling (more flexible dialogue)
 * Write tests, check coverage
 * Add some more goals and description for new features
+* Add documentation into code
 
 ### Developing notes:
 
