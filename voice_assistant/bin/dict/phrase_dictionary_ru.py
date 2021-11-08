@@ -4,9 +4,12 @@ from voice_assistant.bin.dict.constants import BYE, MUSIC_YANDEX, PLAY_YANDEX, T
 
 YANDEX_RESPONSE = 'Играю Яндекс'
 
+"""
+Dictionary consists of phrases with correspondent array of request and response:
+phrase : [request, response]
+"""
 
-# Dictionary consists of phrases with correspondent array of request and response:
-# phrase : [request, response]
+
 def dictionary_ru():
     return {
         HELLO: ['привет', 'Привет-привет!'],

@@ -1,5 +1,13 @@
 import pyttsx3
 
+"""
+App parameters object which contains:
+- os - operation system name
+- tts_engine - initialized Engine object
+- language - defined based on config.properties file
+- dictionary - defined based on language
+"""
+
 
 class Parameters:
     def __init__(self, os: str, tts_engine: pyttsx3.Engine, language: str, dictionary=None):

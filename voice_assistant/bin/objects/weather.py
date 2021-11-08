@@ -1,3 +1,11 @@
+"""
+Weather objects which contains:
+- target_city name
+- temperature
+- general weather status
+"""
+
+
 class Weather:
     def __init__(self):
         self.target_city = ''
