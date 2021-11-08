@@ -4,22 +4,16 @@
 
 ### Yandex.Music
 
-For early development purpose you have to create `cred.properties` file in root and store your token there
-
-```
-[Yandex]
-yandex.token = token
-```
+For using Yandex.Music features you'll need to type login and password to terminal which will result `cred.properties` 
+file with saved token.
 
 ### OpenWeather
 
 Register or sign in to your account openweathermap.org and copy your ApiKey from your profile into cred.properties file
-located in root folder of the project
+located in root folder of the project.
 
-```
-[OpenWeather]
-weather.apikey = apikey
-```
+When first using Weather features, you'll need to type that ApiKey to terminal which will result `cred.properties` 
+file with saved ApiKey.
 
 
 ### Roadmap:
