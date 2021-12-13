@@ -18,6 +18,7 @@ file with saved ApiKey.
 
 ### Roadmap:
 Some changes for test
+for develop
 
 * Show current weather condition based on current location (! Done 08.19.21)
 * Show weather conditions based on second command with city name (! Done 08.20.21)
